@@ -408,25 +408,50 @@
     .tier-grid { grid-template-columns: 1fr; }
   }
   .tier-card {
-    background: var(--bg-card);
+    background: #17191f;
     border: 1px solid var(--border);
     border-radius: 16px;
     padding: clamp(26px, 3vw, 32px);
+    box-shadow: 0 14px 40px rgba(0,0,0,0.3);
+    position: relative;
+    display: flex;
+    flex-direction: column;
   }
   .tier-card.pro { border-color: var(--accent); }
   .tier-card.coming-soon {
-    opacity: 0.6;
+    opacity: 0.55;
     border-style: dashed;
+  }
+  .tier-card-badge {
+    position: absolute;
+    top: -12px;
+    right: 20px;
+    background: linear-gradient(135deg, var(--accent), var(--accent-2));
+    color: #fff;
+    font-size: 0.7rem;
+    font-weight: 700;
+    padding: 4px 14px;
+    border-radius: 999px;
+  }
+  .tier-card-badge.soon {
+    background: var(--bg-alt);
+    border: 1px solid var(--border);
+    color: var(--text-dim);
   }
   .tier-card-title {
     font-family: 'Poppins', -apple-system, BlinkMacSystemFont, "PingFang TC", "Microsoft JhengHei", sans-serif;
     font-size: 1.3rem;
     font-weight: 700;
-    margin-bottom: 18px;
+    color: #fff;
+    margin-bottom: 4px;
   }
-  .tier-card-title.free { color: #5be08f; }
-  .tier-card-title.pro { color: #f0b90b; }
-  .tier-item-list { list-style: none; }
+  .tier-card-tagline {
+    color: var(--text-dim);
+    font-size: 0.85rem;
+    margin-bottom: 16px;
+  }
+  .tier-card-title + .tier-item-list { margin-top: 18px; }
+  .tier-item-list { list-style: none; flex: 1; }
   .tier-item-list li {
     display: flex;
     gap: 12px;
@@ -435,9 +460,53 @@
     border-top: 1px solid var(--border);
   }
   .tier-item-list li:first-child { border-top: none; padding-top: 0; }
-  .tier-item-icon { font-size: 1.3rem; line-height: 1.4; flex-shrink: 0; }
-  .tier-item-list strong { display: block; font-size: 0.98rem; margin-bottom: 2px; }
+  .tier-item-icon {
+    width: 30px;
+    height: 30px;
+    border-radius: 10px;
+    background: rgba(91,140,255,0.12);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+  .tier-item-icon svg {
+    width: 16px;
+    height: 16px;
+    stroke: var(--accent);
+    fill: none;
+    stroke-width: 1.8;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+  }
+  .tier-card.coming-soon .tier-item-icon { background: rgba(255,255,255,0.06); }
+  .tier-card.coming-soon .tier-item-icon svg { stroke: var(--text-dim); }
+  .tier-item-list strong { display: block; font-size: 0.98rem; color: #fff; margin-bottom: 2px; }
   .tier-item-list p { color: var(--text-dim); font-size: 0.86rem; line-height: 1.5; }
+  .tier-card-cta {
+    display: block;
+    text-align: center;
+    margin-top: 20px;
+    padding: 11px 20px;
+    border-radius: 999px;
+    font-weight: 600;
+    font-size: 0.9rem;
+    text-decoration: none;
+  }
+  .tier-card-cta.free {
+    border: 1px solid rgba(255,255,255,0.15);
+    color: #fff;
+  }
+  .tier-card-cta.pro {
+    background: linear-gradient(135deg, var(--accent), var(--accent-2));
+    color: #fff;
+  }
+  .tier-card-cta-placeholder {
+    margin-top: 20px;
+    text-align: center;
+    color: var(--text-dim);
+    font-size: 0.85rem;
+  }
   .about-intro {
     color: var(--text-dim);
     max-width: 640px;
@@ -1005,57 +1074,63 @@
 
     <div class="tier-grid">
       <div class="tier-card free reveal">
-        <h3 class="tier-card-title free">FREE</h3>
+        <h3 class="tier-card-title">FREE</h3>
         <ul class="tier-item-list">
           <li id="news-channel">
-            <span class="tier-item-icon">📰</span>
-            <div><strong>新聞頻道</strong><p>官方公告、新品消息，第一手掌握</p></div>
+            <span class="tier-item-icon"><svg viewBox="0 0 24 24"><path d="M3 10v4h3l6 4V6l-6 4H3Z"/><path d="M16 9a3 3 0 0 1 0 6"/><path d="M18 6a7 7 0 0 1 0 12"/></svg></span>
+            <div><strong>新聞頻道</strong><p>官方公告、新品消息，第一手掌握，不用再等別人通報</p></div>
           </li>
           <li id="community">
-            <span class="tier-item-icon">🤝</span>
-            <div><strong>收藏交流社群</strong><p>分享收藏、交流購買經驗、找代購</p></div>
+            <span class="tier-item-icon"><svg viewBox="0 0 24 24"><path d="M21 12c0 4.14-4.03 7.5-9 7.5-1.2 0-2.34-.2-3.38-.55L4 20l1.2-3.6C4.15 15.03 3.5 13.58 3.5 12 3.5 7.86 7.53 4.5 12.5 4.5S21 7.86 21 12Z"/></svg></span>
+            <div><strong>收藏交流社群</strong><p>分享收藏、交流購買經驗，同好一起找代購</p></div>
           </li>
           <li id="onboarding-guide">
-            <span class="tier-item-icon">📚</span>
-            <div><strong>新手指南</strong><p>導覽頻道帶你 3 分鐘搞懂怎麼用</p></div>
+            <span class="tier-item-icon"><svg viewBox="0 0 24 24"><path d="M12 6c-2-1.5-4.5-2-7-1.5v13c2.5-.5 5 0 7 1.5 2-1.5 4.5-2 7-1.5v-13c-2.5-.5-5 0-7 1.5Z"/><path d="M12 6v13"/></svg></span>
+            <div><strong>新手指南</strong><p>3 分鐘搞懂怎麼蹲貨，新手也能秒懂</p></div>
           </li>
         </ul>
+        <a href="https://discord.gg/fRNef8E5d" class="tier-card-cta free">免費加入</a>
       </div>
 
       <div class="tier-card pro reveal">
-        <h3 class="tier-card-title pro">PRO</h3>
+        <span class="tier-card-badge">推薦</span>
+        <h3 class="tier-card-title">PRO</h3>
+        <p class="tier-card-tagline">認真蹲貨，不靠運氣</p>
         <ul class="tier-item-list">
           <li id="realtime-alerts">
-            <span class="tier-item-icon">⏰</span>
+            <span class="tier-item-icon"><svg viewBox="0 0 24 24"><path d="M12 3a5 5 0 0 0-5 5v3.6L5 15h14l-2-3.4V8a5 5 0 0 0-5-5Z"/><path d="M10 19a2 2 0 0 0 4 0"/></svg></span>
             <div><strong>即時情報通知</strong><p>補貨通知、發售消息、庫存監控</p></div>
           </li>
           <li id="auto-notify">
-            <span class="tier-item-icon">🤖</span>
+            <span class="tier-item-icon"><svg viewBox="0 0 24 24"><rect x="4" y="8" width="16" height="11" rx="2.4"/><path d="M12 8V4.6M9 4h6"/><circle cx="9" cy="13.2" r="1.1"/><circle cx="15" cy="13.2" r="1.1"/><path d="M9 17h6"/></svg></span>
             <div><strong>自動化通知服務</strong><p>補貨提醒、價格通知、搶購連結直接下單</p></div>
           </li>
           <li id="market-insight">
-            <span class="tier-item-icon">📈</span>
+            <span class="tier-item-icon"><svg viewBox="0 0 24 24"><path d="M4 19V5M4 19h16"/><path d="M7.5 16v-4.5M12 16V8M16.5 16v-7"/></svg></span>
             <div><strong>市場資訊整合</strong><p>四大品類行情、海外通路、市場趨勢分析</p></div>
           </li>
         </ul>
+        <a href="https://discord.gg/fRNef8E5d" class="tier-card-cta pro">升級 PRO</a>
       </div>
 
       <div class="tier-card coming-soon reveal">
+        <span class="tier-card-badge soon">Coming Soon</span>
         <h3 class="tier-card-title">敬請期待</h3>
         <ul class="tier-item-list">
           <li id="intl-shipping">
-            <span class="tier-item-icon">🌍</span>
+            <span class="tier-item-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.4 2.4 3.7 5.6 3.7 9s-1.3 6.6-3.7 9c-2.4-2.4-3.7-5.6-3.7-9s1.3-6.6 3.7-9Z"/></svg></span>
             <div><strong>國際寄送服務</strong><p>規劃中，細節確定後會更新</p></div>
           </li>
           <li id="warehousing">
-            <span class="tier-item-icon">🏷️</span>
+            <span class="tier-item-icon"><svg viewBox="0 0 24 24"><path d="M3 10 12 4l9 6v9a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1Z"/><path d="M9 20v-6h6v6"/></svg></span>
             <div><strong>專業倉儲管理</strong><p>規劃中，細節確定後會更新</p></div>
           </li>
           <li id="keyword-tracking">
-            <span class="tier-item-icon">🔍</span>
+            <span class="tier-item-icon"><svg viewBox="0 0 24 24"><path d="M12 3h6a2 2 0 0 1 2 2v6l-10 10-8-8L12 3Z"/><circle cx="15.5" cy="8.5" r="1.3"/></svg></span>
             <div><strong>客製化關鍵字追蹤</strong><p>規劃中，細節確定後會更新</p></div>
           </li>
         </ul>
+        <p class="tier-card-cta-placeholder">敬請期待</p>
       </div>
     </div>
 
