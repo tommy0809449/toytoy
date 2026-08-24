@@ -434,6 +434,17 @@
     grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
     gap: 24px;
   }
+  .feature-group-label {
+    font-size: 1rem;
+    font-weight: 700;
+    margin: 40px 0 20px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .feature-group-label:first-of-type { margin-top: 0; }
+  .feature-group-label.free { color: #5be08f; }
+  .feature-group-label.pro { color: #f0b90b; }
   .grid-2x2 {
     grid-template-columns: repeat(2, 1fr);
   }
@@ -892,6 +903,7 @@
   <div class="nav-item">
     <a href="#features">服務內容</a>
     <div class="dropdown">
+      <a href="#news-channel">新聞頻道</a>
       <a href="#realtime-alerts">即時情報通知</a>
       <a href="#auto-notify">自動化通知服務</a>
       <a href="#community">收藏交流社群</a>
@@ -994,6 +1006,26 @@
 <section id="features">
   <div class="wrap">
     <h2 class="reveal">我們的服務內容</h2>
+
+    <h3 class="feature-group-label free reveal">🆓 FREE 就能用</h3>
+    <div class="feature-list grid-2x2">
+      <div class="card reveal" id="news-channel">
+        <div class="icon-badge">
+          <svg viewBox="0 0 24 24"><rect x="4" y="3" width="16" height="18" rx="1.6"/><path d="M8 8h8M8 12h8M8 16h5"/></svg>
+        </div>
+        <h3>新聞頻道 <span class="tier-badge free">FREE</span></h3>
+        <p>官方公告、新品消息，第一手掌握，不用自己到處找、到處問。</p>
+      </div>
+      <div class="card reveal" id="community">
+        <div class="icon-badge">
+          <svg viewBox="0 0 24 24"><path d="M21 12c0 4.14-4.03 7.5-9 7.5-1.2 0-2.34-.2-3.38-.55L4 20l1.2-3.6C4.15 15.03 3.5 13.58 3.5 12 3.5 7.86 7.53 4.5 12.5 4.5S21 7.86 21 12Z"/></svg>
+        </div>
+        <h3>收藏交流社群 <span class="tier-badge free">FREE</span></h3>
+        <p>分享收藏<br>討論市場資訊<br>交流購買經驗<br>找尋代購與通路情報</p>
+      </div>
+    </div>
+
+    <h3 class="feature-group-label pro reveal">💎 升級 PRO 解鎖</h3>
     <div class="feature-list">
       <div class="card reveal" id="realtime-alerts">
         <div class="icon-badge">
@@ -1009,13 +1041,6 @@
         <h3>自動化通知服務 <span class="tier-badge pro">PRO</span></h3>
         <p>透過自建機器人系統：<br>即時補貨提醒<br>商品價格變化通知<br>新品上架推播<br>搶購連結直接下單</p>
       </div>
-      <div class="card reveal" id="community">
-        <div class="icon-badge">
-          <svg viewBox="0 0 24 24"><path d="M21 12c0 4.14-4.03 7.5-9 7.5-1.2 0-2.34-.2-3.38-.55L4 20l1.2-3.6C4.15 15.03 3.5 13.58 3.5 12 3.5 7.86 7.53 4.5 12.5 4.5S21 7.86 21 12Z"/></svg>
-        </div>
-        <h3>收藏交流社群 <span class="tier-badge free">FREE</span></h3>
-        <p>分享收藏<br>討論市場資訊<br>交流購買經驗<br>找尋代購與通路情報</p>
-      </div>
       <div class="card reveal" id="market-insight">
         <div class="icon-badge">
           <svg viewBox="0 0 24 24"><path d="M4 19V5M4 19h16"/><path d="M7.5 16v-4.5M12 16V8M16.5 16v-7"/></svg>
@@ -1023,6 +1048,9 @@
         <h3>市場資訊整合 <span class="tier-badge pro">PRO</span></h3>
         <p>Beyblade 陀螺行情<br>Pokémon TCG 卡牌<br>One Piece TCG 卡牌<br>Naruto TCG 卡牌<br>海外通路資訊<br>市場趨勢分析</p>
       </div>
+    </div>
+
+    <div class="feature-list grid-2x2">
       <div class="card reveal" id="intl-shipping">
         <div class="icon-badge">
           <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.4 2.4 3.7 5.6 3.7 9s-1.3 6.6-3.7 9c-2.4-2.4-3.7-5.6-3.7-9s1.3-6.6 3.7-9Z"/></svg>
@@ -1038,7 +1066,8 @@
         <p>規劃中的加值服務，細節（服務範圍、計費方式、責任歸屬）確定後會在這裡更新，目前尚未開放。</p>
       </div>
     </div>
-    <p class="section-cta reveal">免費加入就能逛社群，升級 PRO 解鎖即時通知。<a href="#pricing">查看方案 →</a></p>
+
+    <p class="section-cta reveal">免費加入就能看新聞、逛社群，升級 PRO 解鎖即時通知。<a href="#pricing">查看方案 →</a></p>
   </div>
 </section>
 
