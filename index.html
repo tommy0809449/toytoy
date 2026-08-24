@@ -397,63 +397,47 @@
     stroke-linejoin: round;
   }
   .card h3 { font-family: 'Poppins', -apple-system, BlinkMacSystemFont, "PingFang TC", "Microsoft JhengHei", sans-serif; font-size: 1.15rem; font-weight: 600; margin-bottom: 10px; }
-  .tier-badge {
-    display: inline-block;
-    font-size: 0.7rem;
-    font-weight: 700;
-    padding: 2px 9px;
-    border-radius: 999px;
-    vertical-align: middle;
-    margin-left: 4px;
-  }
-  .tier-badge.free {
-    color: #5be08f;
-    border: 1px solid rgba(91,224,143,0.35);
-    background: rgba(91,224,143,0.1);
-  }
-  .tier-badge.pro {
-    color: #f0b90b;
-    border: 1px solid rgba(240,185,11,0.35);
-    background: rgba(240,185,11,0.1);
-  }
-  .coming-soon {
-    display: inline-block;
-    font-size: 0.7rem;
-    font-weight: 600;
-    color: var(--text-dim);
-    border: 1px solid var(--border);
-    padding: 2px 9px;
-    border-radius: 999px;
-    vertical-align: middle;
-    margin-left: 4px;
-  }
   .card p { color: var(--text-dim); font-size: 0.95rem; }
 
-  .feature-list {
+  .tier-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    grid-template-columns: repeat(3, 1fr);
     gap: 24px;
   }
-  .grid-2x2 {
-    grid-template-columns: repeat(2, 1fr);
-  }
-  @media (max-width: 560px) {
-    .grid-2x2 { grid-template-columns: 1fr; }
-  }
-  .feature-grid-9 {
-    grid-template-columns: repeat(3, 1fr);
-  }
   @media (max-width: 860px) {
-    .feature-grid-9 { grid-template-columns: repeat(2, 1fr); }
+    .tier-grid { grid-template-columns: 1fr; }
   }
-  @media (max-width: 560px) {
-    .feature-grid-9 { grid-template-columns: 1fr; }
+  .tier-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: clamp(26px, 3vw, 32px);
   }
-  .coming-soon-card {
-    opacity: 0.55;
+  .tier-card.pro { border-color: var(--accent); }
+  .tier-card.coming-soon {
+    opacity: 0.6;
     border-style: dashed;
   }
-  .coming-soon-card:hover { opacity: 0.75; }
+  .tier-card-title {
+    font-family: 'Poppins', -apple-system, BlinkMacSystemFont, "PingFang TC", "Microsoft JhengHei", sans-serif;
+    font-size: 1.3rem;
+    font-weight: 700;
+    margin-bottom: 18px;
+  }
+  .tier-card-title.free { color: #5be08f; }
+  .tier-card-title.pro { color: #f0b90b; }
+  .tier-item-list { list-style: none; }
+  .tier-item-list li {
+    display: flex;
+    gap: 12px;
+    align-items: flex-start;
+    padding: 12px 0;
+    border-top: 1px solid var(--border);
+  }
+  .tier-item-list li:first-child { border-top: none; padding-top: 0; }
+  .tier-item-icon { font-size: 1.3rem; line-height: 1.4; flex-shrink: 0; }
+  .tier-item-list strong { display: block; font-size: 0.98rem; margin-bottom: 2px; }
+  .tier-item-list p { color: var(--text-dim); font-size: 0.86rem; line-height: 1.5; }
   .about-intro {
     color: var(--text-dim);
     max-width: 640px;
@@ -1019,71 +1003,59 @@
   <div class="wrap">
     <h2 class="reveal">我們的服務內容</h2>
 
-    <div class="feature-list feature-grid-9">
-      <div class="card reveal" id="news-channel">
-        <div class="icon-badge">
-          <svg viewBox="0 0 24 24"><path d="M3 10v4h3l6 4V6l-6 4H3Z"/><path d="M16 9a3 3 0 0 1 0 6"/><path d="M18 6a7 7 0 0 1 0 12"/></svg>
-        </div>
-        <h3>新聞頻道 <span class="tier-badge free">FREE</span></h3>
-        <p>官方公告、新品消息，第一手掌握，不用自己到處找、到處問。</p>
-      </div>
-      <div class="card reveal" id="community">
-        <div class="icon-badge">
-          <svg viewBox="0 0 24 24"><path d="M21 12c0 4.14-4.03 7.5-9 7.5-1.2 0-2.34-.2-3.38-.55L4 20l1.2-3.6C4.15 15.03 3.5 13.58 3.5 12 3.5 7.86 7.53 4.5 12.5 4.5S21 7.86 21 12Z"/></svg>
-        </div>
-        <h3>收藏交流社群 <span class="tier-badge free">FREE</span></h3>
-        <p>分享收藏<br>討論市場資訊<br>交流購買經驗<br>找尋代購與通路情報</p>
-      </div>
-      <div class="card reveal" id="onboarding-guide">
-        <div class="icon-badge">
-          <svg viewBox="0 0 24 24"><path d="M12 6c-2-1.5-4.5-2-7-1.5v13c2.5-.5 5 0 7 1.5 2-1.5 4.5-2 7-1.5v-13c-2.5-.5-5 0-7 1.5Z"/><path d="M12 6v13"/></svg>
-        </div>
-        <h3>新手指南 <span class="tier-badge free">FREE</span></h3>
-        <p>剛加入不知道從哪看起？導覽頻道帶你 3 分鐘搞懂怎麼用。</p>
+    <div class="tier-grid">
+      <div class="tier-card free reveal">
+        <h3 class="tier-card-title free">FREE</h3>
+        <ul class="tier-item-list">
+          <li id="news-channel">
+            <span class="tier-item-icon">📰</span>
+            <div><strong>新聞頻道</strong><p>官方公告、新品消息，第一手掌握</p></div>
+          </li>
+          <li id="community">
+            <span class="tier-item-icon">🤝</span>
+            <div><strong>收藏交流社群</strong><p>分享收藏、交流購買經驗、找代購</p></div>
+          </li>
+          <li id="onboarding-guide">
+            <span class="tier-item-icon">📚</span>
+            <div><strong>新手指南</strong><p>導覽頻道帶你 3 分鐘搞懂怎麼用</p></div>
+          </li>
+        </ul>
       </div>
 
-      <div class="card reveal" id="realtime-alerts">
-        <div class="icon-badge">
-          <svg viewBox="0 0 24 24"><path d="M12 3a5 5 0 0 0-5 5v3.6L5 15h14l-2-3.4V8a5 5 0 0 0-5-5Z"/><path d="M10 19a2 2 0 0 0 4 0"/></svg>
-        </div>
-        <h3>即時情報通知 <span class="tier-badge pro">PRO</span></h3>
-        <p>美版商品補貨通知<br>限量商品發售消息<br>預購、抽選、發售資訊整理<br>各大零售商即時庫存監控</p>
-      </div>
-      <div class="card reveal" id="auto-notify">
-        <div class="icon-badge">
-          <svg viewBox="0 0 24 24"><rect x="4" y="8" width="16" height="11" rx="2.4"/><path d="M12 8V4.6M9 4h6"/><circle cx="9" cy="13.2" r="1.1"/><circle cx="15" cy="13.2" r="1.1"/><path d="M9 17h6"/></svg>
-        </div>
-        <h3>自動化通知服務 <span class="tier-badge pro">PRO</span></h3>
-        <p>透過自建機器人系統：<br>即時補貨提醒<br>商品價格變化通知<br>新品上架推播<br>搶購連結直接下單</p>
-      </div>
-      <div class="card reveal" id="market-insight">
-        <div class="icon-badge">
-          <svg viewBox="0 0 24 24"><path d="M4 19V5M4 19h16"/><path d="M7.5 16v-4.5M12 16V8M16.5 16v-7"/></svg>
-        </div>
-        <h3>市場資訊整合 <span class="tier-badge pro">PRO</span></h3>
-        <p>Beyblade 陀螺行情<br>Pokémon TCG 卡牌<br>One Piece TCG 卡牌<br>Naruto TCG 卡牌<br>海外通路資訊<br>市場趨勢分析</p>
+      <div class="tier-card pro reveal">
+        <h3 class="tier-card-title pro">PRO</h3>
+        <ul class="tier-item-list">
+          <li id="realtime-alerts">
+            <span class="tier-item-icon">⏰</span>
+            <div><strong>即時情報通知</strong><p>補貨通知、發售消息、庫存監控</p></div>
+          </li>
+          <li id="auto-notify">
+            <span class="tier-item-icon">🤖</span>
+            <div><strong>自動化通知服務</strong><p>補貨提醒、價格通知、搶購連結直接下單</p></div>
+          </li>
+          <li id="market-insight">
+            <span class="tier-item-icon">📈</span>
+            <div><strong>市場資訊整合</strong><p>四大品類行情、海外通路、市場趨勢分析</p></div>
+          </li>
+        </ul>
       </div>
 
-      <div class="card reveal coming-soon-card" id="intl-shipping">
-        <div class="icon-badge">
-          <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.4 2.4 3.7 5.6 3.7 9s-1.3 6.6-3.7 9c-2.4-2.4-3.7-5.6-3.7-9s1.3-6.6 3.7-9Z"/></svg>
-        </div>
-        <h3>國際寄送服務 <span class="coming-soon">敬請期待</span></h3>
-        <p>規劃中的加值服務，細節（服務範圍、計費方式、時效）確定後會在這裡更新，目前尚未開放。</p>
-      </div>
-      <div class="card reveal coming-soon-card" id="warehousing">
-        <div class="icon-badge">
-          <svg viewBox="0 0 24 24"><path d="M3 10 12 4l9 6v9a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1Z"/><path d="M9 20v-6h6v6"/></svg>
-        </div>
-        <h3>專業倉儲管理 <span class="coming-soon">敬請期待</span></h3>
-        <p>規劃中的加值服務，細節（服務範圍、計費方式、責任歸屬）確定後會在這裡更新，目前尚未開放。</p>
-      </div>
-      <div class="card reveal coming-soon-card" id="keyword-tracking">
-        <div class="icon-badge">
-          <svg viewBox="0 0 24 24"><path d="M12 3h6a2 2 0 0 1 2 2v6l-10 10-8-8L12 3Z"/><circle cx="15.5" cy="8.5" r="1.3"/></svg>
-        </div>
-        <h3>客製化關鍵字追蹤 <span class="coming-soon">敬請期待</span></h3>
-        <p>規劃中的加值功能，細節確定後會在這裡更新，目前尚未開放。</p>
+      <div class="tier-card coming-soon reveal">
+        <h3 class="tier-card-title">敬請期待</h3>
+        <ul class="tier-item-list">
+          <li id="intl-shipping">
+            <span class="tier-item-icon">🌍</span>
+            <div><strong>國際寄送服務</strong><p>規劃中，細節確定後會更新</p></div>
+          </li>
+          <li id="warehousing">
+            <span class="tier-item-icon">🏷️</span>
+            <div><strong>專業倉儲管理</strong><p>規劃中，細節確定後會更新</p></div>
+          </li>
+          <li id="keyword-tracking">
+            <span class="tier-item-icon">🔍</span>
+            <div><strong>客製化關鍵字追蹤</strong><p>規劃中，細節確定後會更新</p></div>
+          </li>
+        </ul>
       </div>
     </div>
 
