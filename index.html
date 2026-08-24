@@ -434,17 +434,9 @@
     grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
     gap: 24px;
   }
-  .feature-group-label {
-    font-size: 1rem;
-    font-weight: 700;
-    margin: 40px 0 20px;
-    display: flex;
-    align-items: center;
-    gap: 8px;
+  .feature-list + .feature-list {
+    margin-top: 24px;
   }
-  .feature-group-label:first-of-type { margin-top: 0; }
-  .feature-group-label.free { color: #5be08f; }
-  .feature-group-label.pro { color: #f0b90b; }
   .grid-2x2 {
     grid-template-columns: repeat(2, 1fr);
   }
@@ -1007,7 +999,6 @@
   <div class="wrap">
     <h2 class="reveal">我們的服務內容</h2>
 
-    <h3 class="feature-group-label free reveal">🆓 FREE 就能用</h3>
     <div class="feature-list grid-2x2">
       <div class="card reveal" id="news-channel">
         <div class="icon-badge">
@@ -1025,7 +1016,6 @@
       </div>
     </div>
 
-    <h3 class="feature-group-label pro reveal">💎 升級 PRO 解鎖</h3>
     <div class="feature-list">
       <div class="card reveal" id="realtime-alerts">
         <div class="icon-badge">
