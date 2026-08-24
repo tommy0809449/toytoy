@@ -397,6 +397,25 @@
     stroke-linejoin: round;
   }
   .card h3 { font-family: 'Poppins', -apple-system, BlinkMacSystemFont, "PingFang TC", "Microsoft JhengHei", sans-serif; font-size: 1.15rem; font-weight: 600; margin-bottom: 10px; }
+  .tier-badge {
+    display: inline-block;
+    font-size: 0.7rem;
+    font-weight: 700;
+    padding: 2px 9px;
+    border-radius: 999px;
+    vertical-align: middle;
+    margin-left: 4px;
+  }
+  .tier-badge.free {
+    color: #5be08f;
+    border: 1px solid rgba(91,224,143,0.35);
+    background: rgba(91,224,143,0.1);
+  }
+  .tier-badge.pro {
+    color: #f0b90b;
+    border: 1px solid rgba(240,185,11,0.35);
+    background: rgba(240,185,11,0.1);
+  }
   .coming-soon {
     display: inline-block;
     font-size: 0.7rem;
@@ -926,6 +945,10 @@
         <span>JB Hi-Fi</span>
         <span>Kmart</span>
         <span>Myer</span>
+        <span>Toyworld</span>
+        <span>Toys R Us</span>
+        <span>The Gamesmen</span>
+        <span>Mr Toys</span>
       </div>
     </div>
   </div>
@@ -976,28 +999,28 @@
         <div class="icon-badge">
           <svg viewBox="0 0 24 24"><path d="M12 3a5 5 0 0 0-5 5v3.6L5 15h14l-2-3.4V8a5 5 0 0 0-5-5Z"/><path d="M10 19a2 2 0 0 0 4 0"/></svg>
         </div>
-        <h3>即時情報通知</h3>
+        <h3>即時情報通知 <span class="tier-badge pro">PRO</span></h3>
         <p>美版商品補貨通知<br>限量商品發售消息<br>預購、抽選、發售資訊整理<br>各大零售商即時庫存監控</p>
       </div>
       <div class="card reveal" id="auto-notify">
         <div class="icon-badge">
           <svg viewBox="0 0 24 24"><rect x="4" y="8" width="16" height="11" rx="2.4"/><path d="M12 8V4.6M9 4h6"/><circle cx="9" cy="13.2" r="1.1"/><circle cx="15" cy="13.2" r="1.1"/><path d="M9 17h6"/></svg>
         </div>
-        <h3>自動化通知服務</h3>
-        <p>透過自建機器人系統：<br>即時補貨提醒<br>商品價格變化通知<br>新品上架推播<br>客製化關鍵字追蹤</p>
+        <h3>自動化通知服務 <span class="tier-badge pro">PRO</span></h3>
+        <p>透過自建機器人系統：<br>即時補貨提醒<br>商品價格變化通知<br>新品上架推播<br>搶購連結直接下單</p>
       </div>
       <div class="card reveal" id="community">
         <div class="icon-badge">
           <svg viewBox="0 0 24 24"><path d="M21 12c0 4.14-4.03 7.5-9 7.5-1.2 0-2.34-.2-3.38-.55L4 20l1.2-3.6C4.15 15.03 3.5 13.58 3.5 12 3.5 7.86 7.53 4.5 12.5 4.5S21 7.86 21 12Z"/></svg>
         </div>
-        <h3>收藏交流社群</h3>
+        <h3>收藏交流社群 <span class="tier-badge free">FREE</span></h3>
         <p>分享收藏<br>討論市場資訊<br>交流購買經驗<br>找尋代購與通路情報</p>
       </div>
       <div class="card reveal" id="market-insight">
         <div class="icon-badge">
           <svg viewBox="0 0 24 24"><path d="M4 19V5M4 19h16"/><path d="M7.5 16v-4.5M12 16V8M16.5 16v-7"/></svg>
         </div>
-        <h3>市場資訊整合</h3>
+        <h3>市場資訊整合 <span class="tier-badge pro">PRO</span></h3>
         <p>Beyblade 陀螺行情<br>Pokémon TCG 卡牌<br>One Piece TCG 卡牌<br>Naruto TCG 卡牌<br>海外通路資訊<br>市場趨勢分析</p>
       </div>
       <div class="card reveal" id="intl-shipping">
