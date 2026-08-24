@@ -364,6 +364,13 @@
     text-align: center;
     margin-bottom: 48px;
   }
+  .section-subtitle {
+    text-align: center;
+    color: var(--text-dim);
+    font-size: 1rem;
+    margin-top: -32px;
+    margin-bottom: 40px;
+  }
   .category-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
@@ -1070,7 +1077,8 @@
 
 <section id="features">
   <div class="wrap">
-    <h2 class="reveal">我們的服務內容</h2>
+    <h2 class="reveal">免費先看，付費先搶</h2>
+    <p class="section-subtitle reveal">兩種身分，決定你多快知道、多快買到</p>
 
     <div class="tier-grid">
       <div class="tier-card free reveal">
@@ -1078,39 +1086,39 @@
         <ul class="tier-item-list">
           <li id="news-channel">
             <span class="tier-item-icon"><svg viewBox="0 0 24 24"><path d="M3 10v4h3l6 4V6l-6 4H3Z"/><path d="M16 9a3 3 0 0 1 0 6"/><path d="M18 6a7 7 0 0 1 0 12"/></svg></span>
-            <div><strong>新聞頻道</strong><p>官方公告、新品消息，第一手掌握，不用再等別人通報</p></div>
+            <div><strong>新聞頻道</strong><p>官方一公告，頻道馬上貼——不用自己天天刷官網</p></div>
           </li>
           <li id="community">
             <span class="tier-item-icon"><svg viewBox="0 0 24 24"><path d="M21 12c0 4.14-4.03 7.5-9 7.5-1.2 0-2.34-.2-3.38-.55L4 20l1.2-3.6C4.15 15.03 3.5 13.58 3.5 12 3.5 7.86 7.53 4.5 12.5 4.5S21 7.86 21 12Z"/></svg></span>
-            <div><strong>收藏交流社群</strong><p>分享收藏、交流購買經驗，同好一起找代購</p></div>
+            <div><strong>收藏交流社群</strong><p>跟同好聊貨況、對代購，不是一個人在蹲</p></div>
           </li>
           <li id="onboarding-guide">
             <span class="tier-item-icon"><svg viewBox="0 0 24 24"><path d="M12 6c-2-1.5-4.5-2-7-1.5v13c2.5-.5 5 0 7 1.5 2-1.5 4.5-2 7-1.5v-13c-2.5-.5-5 0-7 1.5Z"/><path d="M12 6v13"/></svg></span>
             <div><strong>新手指南</strong><p>3 分鐘搞懂怎麼蹲貨，新手也能秒懂</p></div>
           </li>
         </ul>
-        <a href="https://discord.gg/fRNef8E5d" class="tier-card-cta free">免費加入</a>
+        <a href="https://discord.gg/fRNef8E5d" class="tier-card-cta free">先進來看看</a>
       </div>
 
       <div class="tier-card pro reveal">
         <span class="tier-card-badge">推薦</span>
         <h3 class="tier-card-title">PRO</h3>
-        <p class="tier-card-tagline">認真蹲貨，不靠運氣</p>
+        <p class="tier-card-tagline">認真蹲貨的人，不靠運氣</p>
         <ul class="tier-item-list">
           <li id="realtime-alerts">
             <span class="tier-item-icon"><svg viewBox="0 0 24 24"><path d="M12 3a5 5 0 0 0-5 5v3.6L5 15h14l-2-3.4V8a5 5 0 0 0-5-5Z"/><path d="M10 19a2 2 0 0 0 4 0"/></svg></span>
-            <div><strong>即時情報通知</strong><p>補貨通知、發售消息、庫存監控</p></div>
+            <div><strong>即時情報通知</strong><p>上架那一刻，你比別人先知道——補貨、發售、庫存變化即時推播</p></div>
           </li>
           <li id="auto-notify">
             <span class="tier-item-icon"><svg viewBox="0 0 24 24"><rect x="4" y="8" width="16" height="11" rx="2.4"/><path d="M12 8V4.6M9 4h6"/><circle cx="9" cy="13.2" r="1.1"/><circle cx="15" cy="13.2" r="1.1"/><path d="M9 17h6"/></svg></span>
-            <div><strong>自動化通知服務</strong><p>補貨提醒、價格通知、搶購連結直接下單</p></div>
+            <div><strong>自動化通知服務</strong><p>收到通知直接點進去下單，不用再自己開六個分頁刷新</p></div>
           </li>
           <li id="market-insight">
             <span class="tier-item-icon"><svg viewBox="0 0 24 24"><path d="M4 19V5M4 19h16"/><path d="M7.5 16v-4.5M12 16V8M16.5 16v-7"/></svg></span>
-            <div><strong>市場資訊整合</strong><p>四大品類行情、海外通路、市場趨勢分析</p></div>
+            <div><strong>市場資訊整合</strong><p><strong>這張卡現在值多少？該不該出？</strong>一週更新一次行情，不用自己爬八個網站比價</p></div>
           </li>
         </ul>
-        <a href="https://discord.gg/fRNef8E5d" class="tier-card-cta pro">升級 PRO</a>
+        <a href="https://discord.gg/fRNef8E5d" class="tier-card-cta pro">開始蹲貨</a>
       </div>
 
       <div class="tier-card coming-soon reveal">
@@ -1119,15 +1127,15 @@
         <ul class="tier-item-list">
           <li id="intl-shipping">
             <span class="tier-item-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.4 2.4 3.7 5.6 3.7 9s-1.3 6.6-3.7 9c-2.4-2.4-3.7-5.6-3.7-9s1.3-6.6 3.7-9Z"/></svg></span>
-            <div><strong>國際寄送服務</strong><p>規劃中，細節確定後會更新</p></div>
+            <div><strong>國際寄送服務</strong><p>海外蹲到貨，直接寄到你家——跨境集運方案籌備中</p></div>
           </li>
           <li id="warehousing">
             <span class="tier-item-icon"><svg viewBox="0 0 24 24"><path d="M3 10 12 4l9 6v9a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1Z"/><path d="M9 20v-6h6v6"/></svg></span>
-            <div><strong>專業倉儲管理</strong><p>規劃中，細節確定後會更新</p></div>
+            <div><strong>專業倉儲管理</strong><p><strong>大量入手怕爆倉？</strong>幫你代管、代出貨的服務籌備中</p></div>
           </li>
           <li id="keyword-tracking">
             <span class="tier-item-icon"><svg viewBox="0 0 24 24"><path d="M12 3h6a2 2 0 0 1 2 2v6l-10 10-8-8L12 3Z"/><circle cx="15.5" cy="8.5" r="1.3"/></svg></span>
-            <div><strong>客製化關鍵字追蹤</strong><p>規劃中，細節確定後會更新</p></div>
+            <div><strong>客製化關鍵字追蹤</strong><p><strong>只想追某一款？</strong>設定關鍵字，只通知你在乎的那款</p></div>
           </li>
         </ul>
         <p class="tier-card-cta-placeholder">敬請期待</p>
