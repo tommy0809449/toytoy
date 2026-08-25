@@ -373,8 +373,11 @@
   }
   .category-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    grid-template-columns: repeat(2, 1fr);
     gap: 24px;
+  }
+  @media (max-width: 640px) {
+    .category-grid { grid-template-columns: 1fr; }
   }
   .card {
     background: var(--bg-card);
@@ -403,7 +406,8 @@
     stroke-linecap: round;
     stroke-linejoin: round;
   }
-  .card h3 { font-family: 'Poppins', -apple-system, BlinkMacSystemFont, "PingFang TC", "Microsoft JhengHei", sans-serif; font-size: 1.15rem; font-weight: 600; margin-bottom: 10px; }
+  .card h3 { font-family: 'Poppins', -apple-system, BlinkMacSystemFont, "PingFang TC", "Microsoft JhengHei", sans-serif; font-size: 1.15rem; font-weight: 600; margin-bottom: 4px; }
+  .card-subtitle { color: rgba(255,255,255,0.4); font-size: 0.85rem; margin-bottom: 14px; }
   .card p { color: var(--text-dim); font-size: 0.95rem; }
 
   .tier-grid {
@@ -1022,29 +1026,33 @@
         <div class="icon-badge">
           <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="3.2"/><path d="M12 3v3.2M12 17.8V21M3 12h3.2M17.8 12H21"/></svg>
         </div>
-        <h3>Beyblade</h3>
-        <p>Beyblade 新品發售通路分散，各零售商上架時間不一致。toytoy 監控庫存變化，第一時間通知上架與到貨消息。</p>
+        <h3>戰鬥陀螺</h3>
+        <p class="card-subtitle">Beyblade</p>
+        <p>戰鬥陀螺新品發售通路分散，各零售商上架時間不一致。toytoy 監控澳洲各大通路庫存變化，第一時間通知上架與到貨消息。</p>
       </div>
       <div class="card reveal" id="pokemon-tcg">
         <div class="icon-badge">
-          <svg viewBox="0 0 24 24"><rect x="4" y="3" width="16" height="18" rx="2.4"/><path d="M8 8h8M8 12h8M8 16h5"/></svg>
+          <svg viewBox="0 0 24 24"><rect x="2" y="6" width="20" height="12" rx="2"/><path d="M2 10h20"/></svg>
         </div>
-        <h3>Pokémon TCG</h3>
-        <p>Pokémon TCG 熱門商品經常在幾分鐘內秒殺完售。toytoy 整理各通路的預購資訊與開賣時間，減少錯過的機會。</p>
+        <h3>寶可夢卡牌</h3>
+        <p class="card-subtitle">Pokémon TCG</p>
+        <p>寶可夢熱門商品常常幾分鐘內秒殺，連結一發就搶完。toytoy 整理澳洲各大通路的預購資訊與開賣時間，不用再半夜爬起來蹲點。</p>
       </div>
       <div class="card reveal" id="onepiece-tcg">
         <div class="icon-badge">
-          <svg viewBox="0 0 24 24"><path d="M4 18c3-1 5-3 8-3s5 2 8 3"/><circle cx="12" cy="8" r="4.2"/><path d="M9.4 7.2c.6.6 1.6.6 2.2 0M14.6 7.2c-.6.6-1.6.6-2.2 0"/></svg>
+          <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M16.24 7.76l-2.12 6.36-6.36 2.12 2.12-6.36z"/></svg>
         </div>
-        <h3>One Piece TCG</h3>
-        <p>One Piece TCG 限量商品常採抽選制販售。toytoy 整理各通路的抽選時間與參加方式，不錯過報名期限。</p>
+        <h3>航海王卡牌</h3>
+        <p class="card-subtitle">One Piece TCG</p>
+        <p>航海王卡牌限量商品常採抽選制販售。toytoy 整理澳洲各通路的抽選時間與參加方式，不錯過報名期限。</p>
       </div>
       <div class="card reveal" id="naruto-tcg">
         <div class="icon-badge">
           <svg viewBox="0 0 24 24"><path d="M12 3l2.5 6.5L21 12l-6.5 2.5L12 21l-2.5-6.5L3 12l6.5-2.5z"/></svg>
         </div>
-        <h3>Naruto TCG</h3>
-        <p>Naruto TCG 預計 2027 年夏季正式發售。toytoy 提前追蹤官方公告與上市動態，開賣前就能掌握第一手消息。</p>
+        <h3>火影忍者卡牌</h3>
+        <p class="card-subtitle">Naruto TCG</p>
+        <p>火影忍者卡牌預計 2027 年夏季正式發售。toytoy 提前追蹤官方公告，開賣前就能掌握第一手消息。</p>
       </div>
     </div>
     <p class="section-cta reveal">想搶先看到這些品項的補貨消息？<a href="#pricing">查看方案 →</a></p>
