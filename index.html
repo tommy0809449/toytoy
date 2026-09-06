@@ -73,7 +73,7 @@
       "name": "付款安全嗎？會存我的卡號嗎？",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "付款由第三方金流服務商處理，toytoy 不會接觸或儲存你的完整卡號。詳細規範請見服務條款與退款政策。"
+        "text": "付款由第三方金流服務商處理，toytoy 不會接觸或儲存你的完整卡號。詳細規範請見訂閱條款與退款政策。"
       }
     },
     {
@@ -587,15 +587,6 @@
     margin: 6px 0 4px;
   }
   .price span { font-size: 1rem; color: var(--text-dim); font-weight: 400; }
-  .trial-note {
-    display: inline-block;
-    background: rgba(99,102,241,0.15);
-    color: var(--accent);
-    font-size: 0.85rem;
-    padding: 5px 13px;
-    border-radius: var(--radius-pill);
-    margin: 10px 0 8px;
-  }
   .pricing-howto {
     max-width: 640px;
     margin: 36px auto 0;
@@ -703,36 +694,29 @@
   .hero-cta { margin-top: 4px; }
 
   /* Discord Widget 卡片：即時線上人數 */
+  /* 2026-09-06 改版：從「規模描述/會員數字」改成「具體即時事件」，
+     見 Tommy 的行銷邏輯規格——具體性效應 + 新鮮度訊號比模糊的規模宣稱更可信。 */
   .discord-widget-card {
     display: inline-flex;
-    align-items: center;
-    gap: var(--space-2);
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 2px;
     margin-top: var(--space-3);
-    padding: var(--space-1) var(--space-2);
+    padding: var(--space-2) var(--space-3);
     background: var(--bg-card);
     border: 1px solid var(--border);
     border-radius: var(--radius-card);
+    min-width: 240px;
   }
-  .discord-widget-card__avatars { display: flex; align-items: center; }
-  .discord-widget-card__avatar {
-    width: 26px;
-    height: 26px;
-    border-radius: 50%;
-    border: 2px solid var(--bg-card);
-    margin-left: -8px;
-    object-fit: cover;
-    background: var(--bg);
+  .discord-widget-card__line1 {
+    font-size: var(--fs-sm);
+    font-weight: 700;
+    color: var(--text);
+    white-space: nowrap;
   }
-  .discord-widget-card__avatar:first-child { margin-left: 0; }
-  .discord-widget-card__extra {
-    margin-left: var(--space-1);
+  .discord-widget-card__line2 {
     font-size: var(--fs-xs);
     color: var(--text-muted);
-  }
-  .discord-widget-card__count {
-    font-size: var(--fs-sm);
-    font-weight: 600;
-    color: var(--text);
     white-space: nowrap;
   }
 
@@ -802,14 +786,23 @@
     font-size: var(--fs-sm);
     margin-bottom: var(--space-2);
   }
+  /* 漸進式 CTA，不是最終轉換按鈕，視覺權重刻意比「免費加入 Discord」
+     「立即訂閱 PRO」這兩個真正的主要按鈕輕，所以沿用次要按鈕樣式
+     （半透明背景＋白色邊框），不用實心強調色。 */
   .notif-preview__btn {
     display: inline-block;
-    background: var(--accent);
-    color: #fff;
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(255,255,255,0.15);
+    color: var(--text);
+    text-decoration: none;
     font-size: var(--fs-sm);
     font-weight: 600;
     padding: 6px 18px;
     border-radius: var(--radius-pill);
+    transition: background 200ms ease;
+  }
+  .notif-preview__btn:hover {
+    background: rgba(255,255,255,0.1);
   }
   .section-cta {
     text-align: center;
@@ -1083,8 +1076,8 @@
 
 <div class="marquee-bar" role="note" aria-label="最新公告">
   <div class="marquee-bar__track">
-    <span>◆ 現在加入 Discord，體驗 30 天免費 PRO，不錯過任何限量商品快訊 ◆</span>
-    <span>◆ 現在加入 Discord，體驗 30 天免費 PRO，不錯過任何限量商品快訊 ◆</span>
+    <span>◆ 現在加入 Discord，升級 PRO 搶先掌握限量商品快訊 ◆</span>
+    <span>◆ 現在加入 Discord，升級 PRO 搶先掌握限量商品快訊 ◆</span>
   </div>
 </div>
 
@@ -1135,8 +1128,8 @@
           <a href="#features" class="discord-btn outline hero-cta">了解服務內容</a>
         </div>
         <div class="discord-widget-card reveal" id="discordWidgetCard" aria-live="polite">
-          <div class="discord-widget-card__avatars" id="discordWidgetAvatars"></div>
-          <p class="discord-widget-card__count" id="discordWidgetCount">🟢 載入中…</p>
+          <p class="discord-widget-card__line1" id="widgetLine1">🎯 系統監控中</p>
+          <p class="discord-widget-card__line2" id="widgetLine2">載入最新動態…</p>
         </div>
       </div>
       <div class="hero-visual">
@@ -1214,14 +1207,14 @@
     <p class="section-subtitle reveal">兩種身分，決定你多快知道、多快買到</p>
 
     <div class="notif-preview reveal">
-      <p class="notif-preview__caption">加入 PRO，第一時間收到像這樣的補貨快訊 👇</p>
+      <p class="notif-preview__caption">沒有 PRO，等你自己發現時，這波補貨通常已經秒殺完售</p>
       <div class="notif-preview__card">
         <img class="notif-preview__avatar" src="favicon-512.png" alt="toytoy">
         <div class="notif-preview__body">
           <p class="notif-preview__meta"><strong>toytoy</strong><span class="notif-preview__bot-tag">機器人</span><span class="notif-preview__time">剛剛</span></p>
           <p class="notif-preview__title">🔥 補貨快訊：Pokémon TCG 30週年慶祝系列 Elite Trainer Box</p>
           <p class="notif-preview__desc">JB Hi-Fi 現貨上架，庫存有限</p>
-          <span class="notif-preview__btn">立即搶購</span>
+          <a href="#pricing" class="notif-preview__btn">看看真實案例 →</a>
         </div>
       </div>
     </div>
@@ -1345,14 +1338,13 @@
         <p class="plan-summary">熱門商品、補貨通知、搶購連結，第一時間搶到。</p>
         <div class="price">NT$99<span> / 月</span></div>
         <a class="discord-btn" href="https://discord.gg/fRNef8E5d">💎 立即訂閱 PRO</a>
-        <div class="trial-note">🎁 30 天免費試用</div>
       </div>
     </div>
     <div class="pricing-howto reveal">
       <h4>只需決定這件事</h4>
-      <p>FREE → 讓你知道。<br>PRO → 讓你買到，先免費試用 30 天。</p>
+      <p>FREE → 讓你知道。<br>PRO → 讓你買到，付款完成立刻解鎖。</p>
       <p>網站或 Discord 都能訂閱，<strong>付款完成立刻解鎖身分組</strong>，隨時可取消、不綁約。</p>
-      <p class="fineprint">付款由第三方金流服務商處理，toytoy 不會接觸或儲存你的完整卡號。詳見<a href="/toytoy/terms.html" style="color:var(--accent)">服務條款</a>與<a href="/toytoy/refund.html" style="color:var(--accent)">退款政策</a>。</p>
+      <p class="fineprint">付款由第三方金流服務商處理，toytoy 不會接觸或儲存你的完整卡號。詳見<a href="/toytoy/terms.html" style="color:var(--accent)">訂閱條款</a>與<a href="/toytoy/refund.html" style="color:var(--accent)">退款政策</a>。</p>
     </div>
   </div>
 </section>
@@ -1383,7 +1375,7 @@
 
     <details class="faq-item reveal" id="faq-payment-safety">
       <summary>付款安全嗎？會存我的卡號嗎？<svg class="faq-chevron" viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg></summary>
-      <div class="faq-answer-wrap"><p>付款由第三方金流服務商處理，toytoy 不會接觸或儲存你的完整卡號。詳細規範請見<a href="/toytoy/terms.html" style="color:var(--accent)">服務條款</a>與<a href="/toytoy/refund.html" style="color:var(--accent)">退款政策</a>。</p></div>
+      <div class="faq-answer-wrap"><p>付款由第三方金流服務商處理，toytoy 不會接觸或儲存你的完整卡號。詳細規範請見<a href="/toytoy/terms.html" style="color:var(--accent)">訂閱條款</a>與<a href="/toytoy/refund.html" style="color:var(--accent)">退款政策</a>。</p></div>
     </details>
 
     <details class="faq-item reveal" id="faq-difference">
@@ -1403,7 +1395,7 @@
     <p>toytoy © 2026</p>
     <div class="footer-links">
       <a href="https://discord.gg/fRNef8E5d">Discord 社群</a>
-      <a href="/toytoy/terms.html">服務條款</a>
+      <a href="/toytoy/terms.html">訂閱條款</a>
       <a href="/toytoy/refund.html">退款政策</a>
       <a href="/toytoy/privacy.html">隱私權政策</a>
     </div>
@@ -1547,40 +1539,69 @@
 
 <script>
 (function () {
-  // Discord 官方 Widget API：即時線上人數。伺服器設定 → 小工具 沒開啟的話
-  // 這支 API 會回傳錯誤，改顯示不掛數字的靜態文案，不要編造一個假的線上人數。
-  var GUILD_ID = '1518952631005876274';
-  var countEl = document.getElementById('discordWidgetCount');
-  var avatarsEl = document.getElementById('discordWidgetAvatars');
+  // 2026-09-06 改版：Discord 會員數字/線上人數改成「具體即時事件」，
+  // 見 Tommy 的行銷邏輯規格——具體性效應（模糊規模宣稱訪客會無視）+
+  // 新鮮度訊號（最近一次活動的時間比總量更能觸發行動）。
+  //
+  // 資料來源：payment/server.py 原本就有的公開端點 /activity（機器人偵測到
+  // 新上架/補貨時會推一筆過去，不需要驗證、本來就是公開頻道會發的訊息）。
+  // 這是真實資料，不是假資料——只是目前 /activity 常常是空的（機器人只有
+  // 判定成「值得推播」的變化才會推，本來就不會太頻繁），所以還是需要一個
+  // fallback：沒有真實事件時，不要編造一個假的「N 次庫存變化」數字，改顯示
+  // 「目前監控 10 個零售通路」這種真實、可查證的具體數字（跟下面 trust-logos
+  // 列出的通路數一致）。
+  var ACTIVITY_API = 'https://toyradar-payments-production.up.railway.app/activity';
+  var BRAND_DISPLAY = {
+    'Beyblade': '戰鬥陀螺',
+    'Pokemon': 'Pokémon TCG',
+    'One Piece': 'One Piece TCG',
+    'Naruto': 'Naruto TCG',
+  };
+  var line1El = document.getElementById('widgetLine1');
+  var line2El = document.getElementById('widgetLine2');
+  var rotateTimer = null;
 
-  function showFallback() {
-    countEl.textContent = '🟢 歡迎加入收藏家社群';
+  function relativeTime(isoString) {
+    var diffMs = Date.now() - new Date(isoString).getTime();
+    var mins = Math.round(diffMs / 60000);
+    if (mins < 1) return '剛剛';
+    if (mins < 60) return mins + ' 分鐘前';
+    var hours = Math.round(mins / 60);
+    if (hours < 24) return hours + ' 小時前';
+    return Math.round(hours / 24) + ' 天前';
   }
 
-  fetch('https://discord.com/api/guilds/' + GUILD_ID + '/widget.json')
+  function showFallback() {
+    line1El.textContent = '🎯 系統 24 小時運作中';
+    line2El.textContent = '目前即時監控 10 個澳洲零售通路';
+  }
+
+  function renderEvent(item) {
+    var brand = BRAND_DISPLAY[item.brand] || item.brand;
+    line1El.textContent = '🔔 ' + relativeTime(item.timestamp);
+    line2El.textContent = '偵測到 ' + brand + ' 庫存變化';
+  }
+
+  fetch(ACTIVITY_API)
     .then(function (res) {
-      if (!res.ok) throw new Error('widget disabled');
+      if (!res.ok) throw new Error('activity api error');
       return res.json();
     })
     .then(function (data) {
-      var count = data.presence_count || 0;
-      countEl.textContent = '🟢 ' + count + ' 人正在線上監控中';
-      var members = (data.members || []).slice(0, 5);
-      members.forEach(function (m) {
-        if (!m.avatar_url) return;
-        var img = document.createElement('img');
-        img.className = 'discord-widget-card__avatar';
-        img.src = m.avatar_url;
-        img.alt = '';
-        img.loading = 'lazy';
-        avatarsEl.appendChild(img);
-      });
-      var extra = count - members.length;
-      if (extra > 0) {
-        var span = document.createElement('span');
-        span.className = 'discord-widget-card__extra';
-        span.textContent = '+' + extra + ' 人';
-        avatarsEl.appendChild(span);
+      var items = (data.items || []).filter(function (it) { return it && it.timestamp && it.brand; });
+      if (items.length === 0) {
+        showFallback();
+        return;
+      }
+      // 進階：真的有多筆最近事件時，每 4.5 秒輪播一次，用的都是真實事件，
+      // 不是為了做輪播效果而編造假資料；只有 1 筆就固定顯示，不用硬轉場。
+      var idx = 0;
+      renderEvent(items[idx]);
+      if (items.length > 1) {
+        rotateTimer = window.setInterval(function () {
+          idx = (idx + 1) % items.length;
+          renderEvent(items[idx]);
+        }, 4500);
       }
     })
     .catch(showFallback);
