@@ -89,7 +89,7 @@
       "name": "人在海外（例如台灣）也能用 toytoy 嗎？",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "可以，這也是我們成立這個頻道的初衷之一。玩具卡牌收藏圈裡，美版（英文版）通常比中文版更保值、更搶手——toytoy 追蹤的都是澳洲店面或官網真的買得到、寄得出來的商品，不是道聽塗說的傳言，就算人在海外也能靠這些即時消息自己用原價買到真貨，不用被台灣黃牛加價轉賣賺一手。有寄送需求也可以私訊我們協助處理，正式的國際寄送服務還在籌備中，但個別需求先找我們談沒問題。"
+        "text": "可以，這也是我們成立這個頻道的初衷之一。玩具卡牌收藏圈裡，美版（英文版）通常比中文版更保值、更搶手。toytoy 追蹤的都是澳洲店面或官網真的買得到、寄得出來的商品，不是道聽塗說的傳言，就算人在海外也能靠這些即時消息自己用原價買到真貨，不用被台灣黃牛加價轉賣賺一手。有寄送需求也可以私訊我們協助處理，正式的國際寄送服務還在籌備中，但個別需求先找我們談沒問題。"
       }
     }
   ]
@@ -106,11 +106,11 @@
     --text: #ffffff;
     --text-dim: rgba(255,255,255,0.65);   /* 內文 */
     --text-muted: rgba(255,255,255,0.4);  /* 輔助/次要文字 */
-    --accent: #6366f1;
-    --accent-hover: #818cf8;
-    --accent-tint: rgba(99,102,241,0.12);
+    --accent: #4f46e5;
+    --accent-hover: #4338ca;
+    --accent-tint: rgba(79,70,229,0.12);
     --border: rgba(255,255,255,0.08);
-    --border-accent: #6366f1;
+    --border-accent: #4f46e5;
 
     /* ── 間距系統（8 的倍數）── */
     --space-1: 8px;
@@ -422,6 +422,7 @@
     justify-content: center;
     background: var(--accent-tint);
     margin-bottom: 18px;
+    flex-shrink: 0;
   }
   .icon-badge svg {
     width: 24px;
@@ -432,6 +433,15 @@
     stroke-linecap: round;
     stroke-linejoin: round;
   }
+  .card-header {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    margin-bottom: 14px;
+  }
+  .card-header .icon-badge { margin-bottom: 0; }
+  .card-header h3 { margin-bottom: 2px; }
+  .card-header .card-subtitle { margin-bottom: 0; }
   .card h3 { font-family: 'Poppins', -apple-system, BlinkMacSystemFont, "PingFang TC", "Microsoft JhengHei", sans-serif; font-size: 1.15rem; font-weight: 600; margin-bottom: 4px; }
   .card-subtitle { color: var(--text-muted); font-size: 0.85rem; margin-bottom: 14px; }
   .card p { color: var(--text-dim); font-size: 0.95rem; }
@@ -460,7 +470,7 @@
   .tier-card.pro {
     border-color: var(--accent);
     padding: clamp(40px, 4.4vw, 52px);
-    box-shadow: 0 24px 70px rgba(99,102,241,0.22), 0 14px 40px rgba(0,0,0,0.35);
+    box-shadow: 0 16px 40px rgba(0,0,0,0.4);
   }
   .tier-card.coming-soon {
     opacity: 0.55;
@@ -564,7 +574,7 @@
     border-radius: var(--radius-card);
     padding: clamp(34px, 5vw, 52px);
     text-align: center;
-    box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+    box-shadow: 0 10px 28px rgba(0,0,0,0.25);
     display: flex;
     flex-direction: column;
     position: relative;
@@ -599,7 +609,7 @@
     border-radius: var(--radius-card);
     padding: 24px 28px;
   }
-  .pricing-howto h4 {
+  .pricing-howto h3 {
     color: var(--text);
     font-size: 1.1rem;
     font-weight: 700;
@@ -769,7 +779,7 @@
   .notif-preview__bot-tag {
     background: var(--accent);
     color: #fff;
-    font-size: 10px;
+    font-size: 11px;
     font-weight: 700;
     padding: 1px 6px;
     border-radius: 4px;
@@ -930,7 +940,7 @@
   .card:hover {
     transform: translateY(-4px);
     border-color: var(--accent);
-    box-shadow: 0 20px 46px rgba(99,102,241,0.22);
+    box-shadow: 0 12px 28px rgba(0,0,0,0.3);
   }
 
   .pricing-box:hover {
@@ -1165,35 +1175,51 @@
     <h2 class="reveal">我們服務的品相</h2>
     <div class="category-grid">
       <div class="card reveal" id="beyblade">
-        <div class="icon-badge">
-          <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="3.2"/><path d="M12 3v3.2M12 17.8V21M3 12h3.2M17.8 12H21"/></svg>
+        <div class="card-header">
+          <div class="icon-badge">
+            <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="3.2"/><path d="M12 3v3.2M12 17.8V21M3 12h3.2M17.8 12H21"/></svg>
+          </div>
+          <div>
+            <h3>戰鬥陀螺</h3>
+            <p class="card-subtitle">Beyblade</p>
+          </div>
         </div>
-        <h3>戰鬥陀螺</h3>
-        <p class="card-subtitle">Beyblade</p>
         <p>戰鬥陀螺新品發售通路分散，各零售商上架時間不一致。toytoy 監控澳洲各大通路庫存變化，第一時間通知上架與到貨消息。</p>
       </div>
       <div class="card reveal" id="pokemon-tcg">
-        <div class="icon-badge">
-          <svg viewBox="0 0 24 24"><rect x="2" y="6" width="20" height="12" rx="2"/><path d="M2 10h20"/></svg>
+        <div class="card-header">
+          <div class="icon-badge">
+            <svg viewBox="0 0 24 24"><rect x="2" y="6" width="20" height="12" rx="2"/><path d="M2 10h20"/></svg>
+          </div>
+          <div>
+            <h3>寶可夢卡牌</h3>
+            <p class="card-subtitle">Pokémon TCG</p>
+          </div>
         </div>
-        <h3>寶可夢卡牌</h3>
-        <p class="card-subtitle">Pokémon TCG</p>
         <p>寶可夢熱門商品常常幾分鐘內秒殺，連結一發就搶完。toytoy 整理澳洲各大通路的預購資訊與開賣時間，不用再半夜爬起來蹲點。</p>
       </div>
       <div class="card reveal" id="onepiece-tcg">
-        <div class="icon-badge">
-          <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M16.24 7.76l-2.12 6.36-6.36 2.12 2.12-6.36z"/></svg>
+        <div class="card-header">
+          <div class="icon-badge">
+            <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M16.24 7.76l-2.12 6.36-6.36 2.12 2.12-6.36z"/></svg>
+          </div>
+          <div>
+            <h3>航海王卡牌</h3>
+            <p class="card-subtitle">One Piece TCG</p>
+          </div>
         </div>
-        <h3>航海王卡牌</h3>
-        <p class="card-subtitle">One Piece TCG</p>
         <p>航海王卡牌限量商品常採抽選制販售。toytoy 整理澳洲各通路的抽選時間與參加方式，不錯過報名期限。</p>
       </div>
       <div class="card reveal" id="naruto-tcg">
-        <div class="icon-badge">
-          <svg viewBox="0 0 24 24"><path d="M12 3l2.5 6.5L21 12l-6.5 2.5L12 21l-2.5-6.5L3 12l6.5-2.5z"/></svg>
+        <div class="card-header">
+          <div class="icon-badge">
+            <svg viewBox="0 0 24 24"><path d="M12 3l2.5 6.5L21 12l-6.5 2.5L12 21l-2.5-6.5L3 12l6.5-2.5z"/></svg>
+          </div>
+          <div>
+            <h3>火影忍者卡牌</h3>
+            <p class="card-subtitle">Naruto TCG</p>
+          </div>
         </div>
-        <h3>火影忍者卡牌</h3>
-        <p class="card-subtitle">Naruto TCG</p>
         <p>火影忍者卡牌預計 2027 年夏季正式發售。toytoy 提前追蹤官方公告，開賣前就能掌握第一手消息。</p>
       </div>
     </div>
@@ -1257,7 +1283,7 @@
             <span class="tier-item-icon"><svg viewBox="0 0 24 24"><path d="M12 3a5 5 0 0 0-5 5v3.6L5 15h14l-2-3.4V8a5 5 0 0 0-5-5Z"/><path d="M10 19a2 2 0 0 0 4 0"/></svg></span>
             <div>
               <strong>即時情報通知</strong>
-              <p class="tier-item-desc">上架那一刻，你比別人先知道——補貨、發售、庫存變化即時推播</p>
+              <p class="tier-item-desc">上架那一刻，你比別人先知道：補貨、發售、庫存變化即時推播</p>
             </div>
           </li>
           <li id="auto-notify">
@@ -1314,10 +1340,10 @@
 <section id="about">
   <div class="wrap">
     <h2 class="reveal">我們是誰</h2>
-    <p class="reveal about-intro">每個蒐藏迷都懂那種捶心肝的感覺——盯著補貨頁面刷了一整個禮拜，結果就在上架的那 3 分鐘沒守住，眼睜睜看著心心念念的那款被秒殺完售。</p>
-    <p class="reveal about-intro">toytoy 就是從這樣的挫折長出來的。我們是一支橫跨台灣與澳洲的團隊，本身也是 Beyblade、Pokémon TCG、One Piece TCG、Naruto TCG 的蒐藏愛好者，受夠了每天守著十幾個網站刷新頁面，索性自己動手寫了一套系統，把「盯貨」這件事交給機器人，把時間還給真正重要的事——好好享受蒐藏的樂趣。</p>
+    <p class="reveal about-intro">每個蒐藏迷都懂那種捶心肝的感覺，盯著補貨頁面刷了一整個禮拜，結果就在上架的那 3 分鐘沒守住，眼睜睜看著心心念念的那款被秒殺完售。</p>
+    <p class="reveal about-intro">toytoy 就是從這樣的挫折長出來的。我們是一支橫跨台灣與澳洲的團隊，本身也是 Beyblade、Pokémon TCG、One Piece TCG、Naruto TCG 的蒐藏愛好者，受夠了每天守著十幾個網站刷新頁面，索性自己動手寫了一套系統，把「盯貨」這件事交給機器人，把時間還給真正重要的事：好好享受蒐藏的樂趣。</p>
     <p class="reveal about-intro">現在，我們每天監控各大零售商的庫存與上架動態，把第一手情報整理好、即時推播給你，讓你不用再靠運氣蹲點，也不用再錯過任何一次補貨。</p>
-    <p class="reveal about-intro">我們特別鎖定澳洲的零售通路，是因為澳洲市場常常補貨機會更多、蹲點的收藏家也相對較少——同樣一批限量商品，在澳洲反而更容易蹲得到。</p>
+    <p class="reveal about-intro">我們特別鎖定澳洲的零售通路，是因為澳洲市場常常補貨機會更多、蹲點的收藏家也相對較少。同樣一批限量商品，在澳洲反而更容易蹲得到。</p>
     <p class="reveal about-closing">感謝你的加入。希望在我們的合作之下，每位夥伴都能更快獲得資訊、更少踩雷。<br>也祝你每次都能成功蹲到心目中的那款！</p>
     <p class="section-cta reveal">準備好不再錯過下一次補貨了嗎？<a href="#pricing">了解 PRO 會員 →</a></p>
   </div>
@@ -1341,7 +1367,7 @@
       </div>
     </div>
     <div class="pricing-howto reveal">
-      <h4>只需決定這件事</h4>
+      <h3>只需決定這件事</h3>
       <p>FREE → 讓你知道。<br>PRO → 讓你買到，付款完成立刻解鎖。</p>
       <p>網站或 Discord 都能訂閱，<strong>付款完成立刻解鎖身分組</strong>，隨時可取消、不綁約。</p>
       <p class="fineprint">付款由第三方金流服務商處理，toytoy 不會接觸或儲存你的完整卡號。詳見<a href="/toytoy/terms.html" style="color:var(--accent)">訂閱條款</a>與<a href="/toytoy/refund.html" style="color:var(--accent)">退款政策</a>。</p>
@@ -1385,7 +1411,7 @@
 
     <details class="faq-item reveal" id="faq-overseas">
       <summary>人在海外（例如台灣）也能用 toytoy 嗎？<svg class="faq-chevron" viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg></summary>
-      <div class="faq-answer-wrap"><p>可以，這也是我們成立這個頻道的初衷之一。玩具卡牌收藏圈裡，美版（英文版）通常比中文版更保值、更搶手——toytoy 追蹤的都是澳洲店面或官網真的買得到、寄得出來的商品，不是道聽塗說的傳言，就算人在海外也能靠這些即時消息自己用原價買到真貨，不用被台灣黃牛加價轉賣賺一手。有寄送需求也可以私訊我們協助處理，正式的國際寄送服務還在籌備中，但個別需求先找我們談沒問題。</p></div>
+      <div class="faq-answer-wrap"><p>可以，這也是我們成立這個頻道的初衷之一。玩具卡牌收藏圈裡，美版（英文版）通常比中文版更保值、更搶手。toytoy 追蹤的都是澳洲店面或官網真的買得到、寄得出來的商品，不是道聽塗說的傳言，就算人在海外也能靠這些即時消息自己用原價買到真貨，不用被台灣黃牛加價轉賣賺一手。有寄送需求也可以私訊我們協助處理，正式的國際寄送服務還在籌備中，但個別需求先找我們談沒問題。</p></div>
     </details>
   </div>
 </section>
