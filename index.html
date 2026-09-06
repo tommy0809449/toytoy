@@ -98,20 +98,54 @@
 
 <style>
   :root {
-    --bg: #0A0A0A;
-    --bg-alt: #101216;
-    --bg-card: #16181e;
-    --text: #FFFFFF;
-    --text-dim: #9A9A9A;
-    --accent: #5b8cff;
-    --accent-2: #8f6bff;
+    /* ── 全站設計系統：色彩 ── */
+    --bg: #0d0f14;
+    --bg-alt: radial-gradient(ellipse 120% 60% at 50% 0%, #12141c 0%, #0d0f14 65%);
+    --bg-card: #161922;
+    --bg-deep: #0a0b0f;
+    --text: #ffffff;
+    --text-dim: rgba(255,255,255,0.65);   /* 內文 */
+    --text-muted: rgba(255,255,255,0.4);  /* 輔助/次要文字 */
+    --accent: #6366f1;
+    --accent-hover: #818cf8;
+    --accent-tint: rgba(99,102,241,0.12);
     --border: rgba(255,255,255,0.08);
+    --border-accent: #6366f1;
+
+    /* ── 間距系統（8 的倍數）── */
+    --space-1: 8px;
+    --space-2: 16px;
+    --space-3: 24px;
+    --space-4: 32px;
+    --space-5: 48px;
+    --space-6: 64px;
+    --space-7: 96px;
+
+    /* ── 字級尺度 ── */
+    --fs-xs: 12px;
+    --fs-sm: 14px;
+    --fs-base: 16px;
+    --fs-lg: 20px;
+    --fs-xl: 28px;
+    --fs-2xl: 40px;
+    --fs-3xl: 64px;
+
+    /* ── 圓角系統 ── */
+    --radius-pill: 999px;
+    --radius-card: 16px;
+    --radius-input: 8px;
+    --radius-icon: 12px;
   }
+
   * { box-sizing: border-box; margin: 0; padding: 0; }
   html { scroll-behavior: smooth; }
   body {
     font-family: -apple-system, BlinkMacSystemFont, "PingFang TC", "Microsoft JhengHei", sans-serif;
-    background: var(--bg);
+    background-color: var(--bg);
+    /* 極微弱噪點紋理，疊在主背景上增加質感層次，不影響底色 */
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+    background-repeat: repeat;
+    background-attachment: fixed;
     color: var(--text);
     line-height: 1.7;
     padding-top: 36px;
@@ -129,9 +163,9 @@
     align-items: center;
     justify-content: center;
     gap: 6px;
-    background: #161616;
+    background: var(--bg-card);
     border: 1px solid rgba(255,255,255,0.06);
-    border-radius: 999px;
+    border-radius: var(--radius-pill);
     z-index: 100;
     padding: 8px 16px;
   }
@@ -162,7 +196,7 @@
     white-space: nowrap;
     transition: color 0.2s ease, background 0.2s ease;
     padding: 8px 14px;
-    border-radius: 999px;
+    border-radius: var(--radius-pill);
   }
   .nav-item {
     position: relative;
@@ -178,7 +212,7 @@
     transform: translateX(-50%) translateY(-8px);
     background: var(--bg-card);
     border: 1px solid var(--border);
-    border-radius: 16px;
+    border-radius: var(--radius-card);
     padding: 10px;
     min-width: 190px;
     opacity: 0;
@@ -195,7 +229,7 @@
   .dropdown a {
     display: block;
     padding: 9px 10px;
-    border-radius: 999px;
+    border-radius: var(--radius-pill);
     font-size: 0.85rem;
   }
 
@@ -238,7 +272,7 @@
     padding: clamp(100px, 12vw, 140px) 0 clamp(56px, 8vw, 90px);
     text-align: left;
     overflow: hidden;
-    background: #0A0A0A;
+    background: var(--bg);
   }
   header.hero > * {
     position: relative;
@@ -288,7 +322,7 @@
     align-items: center;
     gap: 8px;
     flex-wrap: wrap;
-    color: rgba(255,255,255,0.4);
+    color: var(--text-muted);
     font-size: 0.8rem;
   }
   .hero-meta .dot {
@@ -307,7 +341,7 @@
   }
   .trust-row .trust-label {
     font-size: 0.78rem;
-    color: rgba(255,255,255,0.4);
+    color: var(--text-muted);
     letter-spacing: 0.04em;
     margin-bottom: 16px;
   }
@@ -335,7 +369,7 @@
     margin-bottom: 24px;
   }
   header.hero p {
-    color: rgba(255,255,255,0.6);
+    color: var(--text-dim);
     font-size: clamp(1rem, 1.1vw, 1.125rem);
     line-height: 1.6;
     max-width: 65%;
@@ -374,7 +408,7 @@
   .card {
     background: var(--bg-card);
     border: 1px solid var(--border);
-    border-radius: 16px;
+    border-radius: var(--radius-card);
     padding: clamp(26px, 3vw, 36px);
     scroll-margin-top: 68px;
     box-shadow: 0 10px 30px rgba(0,0,0,0.22);
@@ -382,11 +416,11 @@
   .icon-badge {
     width: 48px;
     height: 48px;
-    border-radius: 16px;
+    border-radius: var(--radius-icon);
     display: flex;
     align-items: center;
     justify-content: center;
-    background: rgba(91,140,255,0.12);
+    background: var(--accent-tint);
     margin-bottom: 18px;
   }
   .icon-badge svg {
@@ -399,7 +433,7 @@
     stroke-linejoin: round;
   }
   .card h3 { font-family: 'Poppins', -apple-system, BlinkMacSystemFont, "PingFang TC", "Microsoft JhengHei", sans-serif; font-size: 1.15rem; font-weight: 600; margin-bottom: 4px; }
-  .card-subtitle { color: rgba(255,255,255,0.4); font-size: 0.85rem; margin-bottom: 14px; }
+  .card-subtitle { color: var(--text-muted); font-size: 0.85rem; margin-bottom: 14px; }
   .card p { color: var(--text-dim); font-size: 0.95rem; }
 
   #features .wrap { max-width: 1180px; }
@@ -414,9 +448,9 @@
     .tier-grid { grid-template-columns: 1fr; }
   }
   .tier-card {
-    background: #17191f;
+    background: var(--bg-card);
     border: 1px solid var(--border);
-    border-radius: 18px;
+    border-radius: var(--radius-card);
     padding: clamp(28px, 3.2vw, 36px);
     box-shadow: 0 14px 40px rgba(0,0,0,0.3);
     position: relative;
@@ -426,7 +460,7 @@
   .tier-card.pro {
     border-color: var(--accent);
     padding: clamp(40px, 4.4vw, 52px);
-    box-shadow: 0 24px 70px rgba(91,140,255,0.22), 0 14px 40px rgba(0,0,0,0.35);
+    box-shadow: 0 24px 70px rgba(99,102,241,0.22), 0 14px 40px rgba(0,0,0,0.35);
   }
   .tier-card.coming-soon {
     opacity: 0.55;
@@ -436,12 +470,12 @@
     position: absolute;
     top: -12px;
     right: 20px;
-    background: linear-gradient(135deg, var(--accent), var(--accent-2));
+    background: linear-gradient(135deg, var(--accent), var(--accent-hover));
     color: #fff;
     font-size: 0.7rem;
     font-weight: 700;
     padding: 4px 14px;
-    border-radius: 999px;
+    border-radius: var(--radius-pill);
   }
   .tier-card-badge.soon {
     background: var(--bg-alt);
@@ -474,8 +508,8 @@
   .tier-item-icon {
     width: 32px;
     height: 32px;
-    border-radius: 10px;
-    background: rgba(91,140,255,0.12);
+    border-radius: var(--radius-icon);
+    background: var(--accent-tint);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -490,7 +524,7 @@
     stroke-linecap: round;
     stroke-linejoin: round;
   }
-  .tier-card.pro .tier-item-icon { width: 42px; height: 42px; border-radius: 13px; }
+  .tier-card.pro .tier-item-icon { width: 42px; height: 42px; border-radius: var(--radius-icon); }
   .tier-card.pro .tier-item-icon svg { width: 22px; height: 22px; }
   .tier-card.coming-soon .tier-item-icon { background: rgba(255,255,255,0.06); }
   .tier-card.coming-soon .tier-item-icon svg { stroke: var(--text-dim); }
@@ -527,7 +561,7 @@
   .pricing-box {
     background: linear-gradient(180deg, var(--bg-card), var(--bg-alt));
     border: 1px solid var(--border);
-    border-radius: 16px;
+    border-radius: var(--radius-card);
     padding: clamp(34px, 5vw, 52px);
     text-align: center;
     box-shadow: 0 20px 60px rgba(0,0,0,0.3);
@@ -555,11 +589,11 @@
   .price span { font-size: 1rem; color: var(--text-dim); font-weight: 400; }
   .trial-note {
     display: inline-block;
-    background: rgba(91,140,255,0.15);
+    background: rgba(99,102,241,0.15);
     color: var(--accent);
     font-size: 0.85rem;
     padding: 5px 13px;
-    border-radius: 999px;
+    border-radius: var(--radius-pill);
     margin: 10px 0 8px;
   }
   .pricing-howto {
@@ -571,7 +605,7 @@
     line-height: 1.7;
     background: var(--bg-card);
     border: 1px solid var(--border);
-    border-radius: 16px;
+    border-radius: var(--radius-card);
     padding: 24px 28px;
   }
   .pricing-howto h4 {
@@ -633,19 +667,20 @@
     justify-content: center;
     margin-top: 24px;
     padding: 14px 28px;
-    border-radius: 999px;
-    background: rgba(255,255,255,0.05);
-    border: 1px solid rgba(255,255,255,0.15);
+    border-radius: var(--radius-pill);
+    background: var(--accent);
+    border: 1px solid var(--accent);
     color: #fff;
     text-decoration: none;
     font-weight: 600;
     font-size: 1rem;
     box-shadow: none;
-    transition: background 200ms ease;
+    transition: background 200ms ease, border-color 200ms ease;
     scroll-margin-top: 68px;
   }
   .discord-btn:hover {
-    background: rgba(255,255,255,0.1);
+    background: var(--accent-hover);
+    border-color: var(--accent-hover);
   }
   .discord-btn.outline {
     background: rgba(255,255,255,0.05);
@@ -662,10 +697,120 @@
     background: rgba(255,255,255,0.08);
     color: #fff;
     padding: 2px 6px;
-    border-radius: 999px;
+    border-radius: var(--radius-pill);
     font-size: 0.88em;
   }
   .hero-cta { margin-top: 4px; }
+
+  /* Discord Widget 卡片：即時線上人數 */
+  .discord-widget-card {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-2);
+    margin-top: var(--space-3);
+    padding: var(--space-1) var(--space-2);
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-card);
+  }
+  .discord-widget-card__avatars { display: flex; align-items: center; }
+  .discord-widget-card__avatar {
+    width: 26px;
+    height: 26px;
+    border-radius: 50%;
+    border: 2px solid var(--bg-card);
+    margin-left: -8px;
+    object-fit: cover;
+    background: var(--bg);
+  }
+  .discord-widget-card__avatar:first-child { margin-left: 0; }
+  .discord-widget-card__extra {
+    margin-left: var(--space-1);
+    font-size: var(--fs-xs);
+    color: var(--text-muted);
+  }
+  .discord-widget-card__count {
+    font-size: var(--fs-sm);
+    font-weight: 600;
+    color: var(--text);
+    white-space: nowrap;
+  }
+
+  /* 假通知預覽卡片：模擬一則 Discord 補貨快訊長怎樣 */
+  .notif-preview {
+    text-align: center;
+    margin-bottom: var(--space-6);
+  }
+  .notif-preview__caption {
+    color: var(--text-muted);
+    font-size: var(--fs-sm);
+    margin-bottom: var(--space-2);
+  }
+  .notif-preview__card {
+    display: flex;
+    align-items: flex-start;
+    gap: var(--space-2);
+    max-width: 440px;
+    margin: 0 auto;
+    text-align: left;
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-card);
+    padding: var(--space-3);
+    animation: notifBreathe 3.5s ease-in-out infinite;
+  }
+  @keyframes notifBreathe {
+    0%, 100% { box-shadow: 0 0 0 0 rgba(99,102,241,0); }
+    50% { box-shadow: 0 0 28px 3px rgba(99,102,241,0.14); }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .notif-preview__card { animation: none; }
+  }
+  .notif-preview__avatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    flex-shrink: 0;
+  }
+  .notif-preview__body { flex: 1; min-width: 0; }
+  .notif-preview__meta {
+    display: flex;
+    align-items: center;
+    gap: var(--space-1);
+    font-size: var(--fs-xs);
+    color: var(--text-muted);
+    margin-bottom: var(--space-1);
+  }
+  .notif-preview__meta strong { color: var(--text); font-size: var(--fs-sm); }
+  .notif-preview__bot-tag {
+    background: var(--accent);
+    color: #fff;
+    font-size: 10px;
+    font-weight: 700;
+    padding: 1px 6px;
+    border-radius: 4px;
+  }
+  .notif-preview__title {
+    color: #fb923c;
+    font-weight: 700;
+    font-size: var(--fs-base);
+    line-height: 1.35;
+    margin-bottom: 4px;
+  }
+  .notif-preview__desc {
+    color: var(--text-dim);
+    font-size: var(--fs-sm);
+    margin-bottom: var(--space-2);
+  }
+  .notif-preview__btn {
+    display: inline-block;
+    background: var(--accent);
+    color: #fff;
+    font-size: var(--fs-sm);
+    font-weight: 600;
+    padding: 6px 18px;
+    border-radius: var(--radius-pill);
+  }
   .section-cta {
     text-align: center;
     margin-top: 44px;
@@ -685,7 +830,7 @@
     background: #ffffff;
     color: #0a0a0a;
     padding: 8px 18px;
-    border-radius: 999px;
+    border-radius: var(--radius-pill);
     font-weight: 600;
   }
   .topnav a.nav-cta:hover { color: #0a0a0a; background: rgba(255,255,255,0.85); }
@@ -786,13 +931,13 @@
   .card,
   .pricing-box,
   .badge {
-    transition: all 0.4s cubic-bezier(0.16,1,0.3,1);
+    transition: transform 200ms cubic-bezier(0.4, 0, 0.2, 1), border-color 200ms cubic-bezier(0.4, 0, 0.2, 1), box-shadow 200ms cubic-bezier(0.4, 0, 0.2, 1);
   }
 
   .card:hover {
-    transform: translateY(-6px);
+    transform: translateY(-4px);
     border-color: var(--accent);
-    box-shadow: 0 20px 46px rgba(91,140,255,0.18);
+    box-shadow: 0 20px 46px rgba(99,102,241,0.22);
   }
 
   .pricing-box:hover {
@@ -815,7 +960,7 @@
     position: fixed;
     top: 0; left: 0; right: 0;
     height: 36px;
-    background: #2a2a2a;
+    background: var(--bg-deep);
     color: #fff;
     overflow: hidden;
     z-index: 200;
@@ -851,10 +996,10 @@
     display: inline-flex;
     align-items: center;
     gap: 8px;
-    background: #2f4fc4;
+    background: var(--accent);
     color: #fff;
     border: none;
-    border-radius: 999px;
+    border-radius: var(--radius-pill);
     padding: 14px 20px;
     font-size: 0.85rem;
     font-weight: 600;
@@ -864,7 +1009,7 @@
     transition: transform 0.2s ease, background 0.2s ease, box-shadow 0.2s ease;
   }
   .contact-fab:hover {
-    background: #26409e;
+    background: var(--accent-hover);
     transform: translateY(-50%) scale(1.05);
     box-shadow: 0 20px 44px rgba(0,0,0,0.6), 0 8px 18px rgba(0,0,0,0.45);
   }
@@ -883,9 +1028,9 @@
   .contact-modal-overlay.is-open { display: block; }
   .contact-modal {
     width: 100%;
-    background: #08090b;
+    background: var(--bg-deep);
     border: 1px solid var(--border);
-    border-radius: 20px;
+    border-radius: var(--radius-card);
     padding: 24px;
     box-shadow: 0 24px 60px rgba(0,0,0,0.55);
   }
@@ -903,9 +1048,9 @@
   .contact-modal input,
   .contact-modal textarea {
     width: 100%;
-    background: #17191f;
+    background: var(--bg-card);
     border: 1px solid var(--border);
-    border-radius: 10px;
+    border-radius: var(--radius-input);
     color: var(--text);
     padding: 10px 12px;
     font-size: 0.85rem;
@@ -916,7 +1061,7 @@
   .contact-modal .hp-field { position: absolute; left: -9999px; opacity: 0; height: 0; overflow: hidden; }
   .contact-modal__actions { display: flex; gap: 10px; justify-content: flex-end; }
   .contact-modal__btn {
-    border-radius: 999px;
+    border-radius: var(--radius-pill);
     padding: 10px 20px;
     font-size: 0.85rem;
     font-weight: 600;
@@ -927,7 +1072,7 @@
   .contact-modal__btn--cancel { background: transparent; color: var(--text-dim); }
   .contact-modal__btn--cancel:hover { color: var(--text); }
   .contact-modal__btn--submit { background: var(--accent); color: #fff; border-color: transparent; }
-  .contact-modal__btn--submit:hover { background: #4a7bee; }
+  .contact-modal__btn--submit:hover { background: var(--accent-hover); }
   .contact-modal__btn--submit:disabled { opacity: 0.6; cursor: default; }
   .contact-modal__status { font-size: 0.8rem; margin-top: 4px; min-height: 1.2em; }
   .contact-modal__status.is-error { color: #ff6b6b; }
@@ -988,6 +1133,10 @@
         <div class="hero-cta-group">
           <a href="https://discord.gg/fRNef8E5d" class="discord-btn hero-cta">免費加入 Discord</a>
           <a href="#features" class="discord-btn outline hero-cta">了解服務內容</a>
+        </div>
+        <div class="discord-widget-card reveal" id="discordWidgetCard" aria-live="polite">
+          <div class="discord-widget-card__avatars" id="discordWidgetAvatars"></div>
+          <p class="discord-widget-card__count" id="discordWidgetCount">🟢 載入中…</p>
         </div>
       </div>
       <div class="hero-visual">
@@ -1063,6 +1212,19 @@
   <div class="wrap">
     <h2 class="reveal">免費先看，付費先搶</h2>
     <p class="section-subtitle reveal">兩種身分，決定你多快知道、多快買到</p>
+
+    <div class="notif-preview reveal">
+      <p class="notif-preview__caption">加入 PRO，第一時間收到像這樣的補貨快訊 👇</p>
+      <div class="notif-preview__card">
+        <img class="notif-preview__avatar" src="favicon-512.png" alt="toytoy">
+        <div class="notif-preview__body">
+          <p class="notif-preview__meta"><strong>toytoy</strong><span class="notif-preview__bot-tag">機器人</span><span class="notif-preview__time">剛剛</span></p>
+          <p class="notif-preview__title">🔥 補貨快訊：Pokémon TCG 30週年慶祝系列 Elite Trainer Box</p>
+          <p class="notif-preview__desc">JB Hi-Fi 現貨上架，庫存有限</p>
+          <span class="notif-preview__btn">立即搶購</span>
+        </div>
+      </div>
+    </div>
 
     <div class="tier-grid">
       <div class="tier-card free reveal">
@@ -1380,6 +1542,48 @@
     items.forEach(function (el) { el.classList.add('in-view'); });
     observer.disconnect();
   }, 1800);
+})();
+</script>
+
+<script>
+(function () {
+  // Discord 官方 Widget API：即時線上人數。伺服器設定 → 小工具 沒開啟的話
+  // 這支 API 會回傳錯誤，改顯示不掛數字的靜態文案，不要編造一個假的線上人數。
+  var GUILD_ID = '1518952631005876274';
+  var countEl = document.getElementById('discordWidgetCount');
+  var avatarsEl = document.getElementById('discordWidgetAvatars');
+
+  function showFallback() {
+    countEl.textContent = '🟢 歡迎加入收藏家社群';
+  }
+
+  fetch('https://discord.com/api/guilds/' + GUILD_ID + '/widget.json')
+    .then(function (res) {
+      if (!res.ok) throw new Error('widget disabled');
+      return res.json();
+    })
+    .then(function (data) {
+      var count = data.presence_count || 0;
+      countEl.textContent = '🟢 ' + count + ' 人正在線上監控中';
+      var members = (data.members || []).slice(0, 5);
+      members.forEach(function (m) {
+        if (!m.avatar_url) return;
+        var img = document.createElement('img');
+        img.className = 'discord-widget-card__avatar';
+        img.src = m.avatar_url;
+        img.alt = '';
+        img.loading = 'lazy';
+        avatarsEl.appendChild(img);
+      });
+      var extra = count - members.length;
+      if (extra > 0) {
+        var span = document.createElement('span');
+        span.className = 'discord-widget-card__extra';
+        span.textContent = '+' + extra + ' 人';
+        avatarsEl.appendChild(span);
+      }
+    })
+    .catch(showFallback);
 })();
 </script>
 
