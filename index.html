@@ -1075,7 +1075,7 @@
 <body>
 
 <div class="marquee-bar" role="note" aria-label="最新公告">
-  <div class="marquee-bar__track">
+  <div class="marquee-bar__track" id="marqueeTrack">
     <span>◆ 現在加入 Discord，升級 PRO 搶先掌握限量商品快訊 ◆</span>
     <span>◆ 現在加入 Discord，升級 PRO 搶先掌握限量商品快訊 ◆</span>
   </div>
@@ -1605,6 +1605,65 @@
       }
     })
     .catch(showFallback);
+})();
+</script>
+
+<script>
+(function () {
+  // 頂部跑馬燈：原本固定的 CTA 文字 + 即時偵測到的補貨/上架事件輪流出現。
+  // 資料來源跟 Hero 區塊的 Discord Widget 卡片同一個 /activity 端點，
+  // 沒有真實事件時退回一句真實可查證的說法，不編造假數字。
+  var ACTIVITY_API = 'https://toyradar-payments-production.up.railway.app/activity';
+  var CTA_TEXT = '現在加入 Discord，升級 PRO 搶先掌握限量商品快訊';
+  var FALLBACK_TEXT = '系統 24 小時運作中，即時監控 10 個澳洲零售通路';
+  var MAX_EVENTS = 5;
+  var BRAND_DISPLAY = {
+    'Beyblade': '戰鬥陀螺',
+    'Pokemon': 'Pokémon TCG',
+    'One Piece': 'One Piece TCG',
+    'Naruto': 'Naruto TCG',
+  };
+
+  function relativeTime(isoString) {
+    var diffMs = Date.now() - new Date(isoString).getTime();
+    var mins = Math.round(diffMs / 60000);
+    if (mins < 1) return '剛剛';
+    if (mins < 60) return mins + ' 分鐘前';
+    var hours = Math.round(mins / 60);
+    if (hours < 24) return hours + ' 小時前';
+    return Math.round(hours / 24) + ' 天前';
+  }
+
+  function renderMarquee(messages) {
+    var track = document.getElementById('marqueeTrack');
+    if (!track) return;
+    var doubled = messages.concat(messages);
+    track.innerHTML = doubled.map(function (msg) {
+      return '<span>◆ ' + msg + ' ◆</span>';
+    }).join('');
+  }
+
+  fetch(ACTIVITY_API)
+    .then(function (res) {
+      if (!res.ok) throw new Error('activity api error');
+      return res.json();
+    })
+    .then(function (data) {
+      var items = (data.items || []).filter(function (it) { return it && it.timestamp && it.brand; });
+      var messages = [CTA_TEXT];
+      if (items.length === 0) {
+        messages.push(FALLBACK_TEXT);
+      } else {
+        items.slice(0, MAX_EVENTS).forEach(function (item) {
+          var brand = BRAND_DISPLAY[item.brand] || item.brand;
+          messages.push('🔔 ' + relativeTime(item.timestamp) + '偵測到 ' + brand + ' 庫存變化');
+        });
+      }
+      renderMarquee(messages);
+    })
+    .catch(function () {
+      renderMarquee([CTA_TEXT, FALLBACK_TEXT]);
+    });
 })();
 </script>
 
