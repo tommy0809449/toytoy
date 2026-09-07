@@ -703,33 +703,6 @@
   }
   .hero-cta { margin-top: 4px; }
 
-  /* Discord Widget 卡片：即時線上人數 */
-  /* 2026-09-06 改版：從「規模描述/會員數字」改成「具體即時事件」，
-     見 Tommy 的行銷邏輯規格——具體性效應 + 新鮮度訊號比模糊的規模宣稱更可信。 */
-  .discord-widget-card {
-    display: inline-flex;
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 2px;
-    margin-top: var(--space-3);
-    padding: var(--space-2) var(--space-3);
-    background: var(--bg-card);
-    border: 1px solid var(--border);
-    border-radius: var(--radius-card);
-    min-width: 240px;
-  }
-  .discord-widget-card__line1 {
-    font-size: var(--fs-sm);
-    font-weight: 700;
-    color: var(--text);
-    white-space: nowrap;
-  }
-  .discord-widget-card__line2 {
-    font-size: var(--fs-xs);
-    color: var(--text-muted);
-    white-space: nowrap;
-  }
-
   /* 假通知預覽卡片：模擬一則 Discord 補貨快訊長怎樣 */
   .notif-preview {
     text-align: center;
@@ -1087,7 +1060,9 @@
 <div class="marquee-bar" role="note" aria-label="最新公告">
   <div class="marquee-bar__track" id="marqueeTrack">
     <span>◆ 現在加入 Discord，升級 PRO 搶先掌握限量商品快訊 ◆</span>
+    <span>◆ 系統 24 小時運作中，即時監控 10 個澳洲零售通路 ◆</span>
     <span>◆ 現在加入 Discord，升級 PRO 搶先掌握限量商品快訊 ◆</span>
+    <span>◆ 系統 24 小時運作中，即時監控 10 個澳洲零售通路 ◆</span>
   </div>
 </div>
 
@@ -1136,10 +1111,6 @@
         <div class="hero-cta-group">
           <a href="https://discord.gg/fRNef8E5d" class="discord-btn hero-cta">免費加入 Discord</a>
           <a href="#features" class="discord-btn outline hero-cta">了解服務內容</a>
-        </div>
-        <div class="discord-widget-card reveal" id="discordWidgetCard" aria-live="polite">
-          <p class="discord-widget-card__line1" id="widgetLine1">🎯 系統監控中</p>
-          <p class="discord-widget-card__line2" id="widgetLine2">載入最新動態…</p>
         </div>
       </div>
       <div class="hero-visual">
@@ -1560,77 +1531,6 @@
     items.forEach(function (el) { el.classList.add('in-view'); });
     observer.disconnect();
   }, 1800);
-})();
-</script>
-
-<script>
-(function () {
-  // 2026-09-06 改版：Discord 會員數字/線上人數改成「具體即時事件」，
-  // 見 Tommy 的行銷邏輯規格——具體性效應（模糊規模宣稱訪客會無視）+
-  // 新鮮度訊號（最近一次活動的時間比總量更能觸發行動）。
-  //
-  // 資料來源：payment/server.py 原本就有的公開端點 /activity（機器人偵測到
-  // 新上架/補貨時會推一筆過去，不需要驗證、本來就是公開頻道會發的訊息）。
-  // 這是真實資料，不是假資料——只是目前 /activity 常常是空的（機器人只有
-  // 判定成「值得推播」的變化才會推，本來就不會太頻繁），所以還是需要一個
-  // fallback：沒有真實事件時，不要編造一個假的「N 次庫存變化」數字，改顯示
-  // 「目前監控 10 個零售通路」這種真實、可查證的具體數字（跟下面 trust-logos
-  // 列出的通路數一致）。
-  var ACTIVITY_API = 'https://toyradar-payments-production.up.railway.app/activity';
-  var BRAND_DISPLAY = {
-    'Beyblade': '戰鬥陀螺',
-    'Pokemon': 'Pokémon TCG',
-    'One Piece': 'One Piece TCG',
-    'Naruto': 'Naruto TCG',
-  };
-  var line1El = document.getElementById('widgetLine1');
-  var line2El = document.getElementById('widgetLine2');
-  var rotateTimer = null;
-
-  function relativeTime(isoString) {
-    var diffMs = Date.now() - new Date(isoString).getTime();
-    var mins = Math.round(diffMs / 60000);
-    if (mins < 1) return '剛剛';
-    if (mins < 60) return mins + ' 分鐘前';
-    var hours = Math.round(mins / 60);
-    if (hours < 24) return hours + ' 小時前';
-    return Math.round(hours / 24) + ' 天前';
-  }
-
-  function showFallback() {
-    line1El.textContent = '🎯 系統 24 小時運作中';
-    line2El.textContent = '目前即時監控 10 個澳洲零售通路';
-  }
-
-  function renderEvent(item) {
-    var brand = BRAND_DISPLAY[item.brand] || item.brand;
-    line1El.textContent = '🔔 ' + relativeTime(item.timestamp);
-    line2El.textContent = '偵測到 ' + brand + ' 庫存變化';
-  }
-
-  fetch(ACTIVITY_API)
-    .then(function (res) {
-      if (!res.ok) throw new Error('activity api error');
-      return res.json();
-    })
-    .then(function (data) {
-      var items = (data.items || []).filter(function (it) { return it && it.timestamp && it.brand; });
-      if (items.length === 0) {
-        showFallback();
-        return;
-      }
-      // 進階：真的有多筆最近事件時，每 4.5 秒輪播一次，用的都是真實事件，
-      // 不是為了做輪播效果而編造假資料；只有 1 筆就固定顯示，不用硬轉場。
-      var idx = 0;
-      renderEvent(items[idx]);
-      if (items.length > 1) {
-        rotateTimer = window.setInterval(function () {
-          idx = (idx + 1) % items.length;
-          renderEvent(items[idx]);
-        }, 4500);
-      }
-    })
-    .catch(showFallback);
 })();
 </script>
 
