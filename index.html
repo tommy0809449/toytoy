@@ -38,10 +38,10 @@
   "mainEntity": [
     {
       "@type": "Question",
-      "name": "免費會員跟 PRO 會員差在哪？",
+      "name": "訂閱後可以看到什麼？",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "免費加入就能看官方公告、新品消息，也能逛各品類的收藏交流頻道。升級 PRO 才能解鎖各大零售商即時庫存/補貨通知、限量商品搶購連結、澳洲通路情報等 PRO 專屬內容。"
+        "text": "訂閱就直接加入 toytoy 的 Discord 伺服器，新聞公告、收藏交流社群、各大零售商即時庫存/補貨通知、限量商品搶購連結、澳洲通路情報全部都看得到，不分免費跟付費兩種身分。"
       }
     },
     {
@@ -49,7 +49,7 @@
       "name": "toytoy 訂閱費用多少？",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "加入 Discord 完全免費。PRO 會員費用為 NT$99 / 月，點歡迎頻道裡的「立即升級 PRO」按鈕即可取得訂閱連結升級，付款成功後立即解鎖。"
+        "text": "訂閱費用是 US$3.99 / 月，前 7 天免費試用，試用期內取消不會被收費。透過 Whop 收款，點主頁的「立即訂閱」連結到結帳頁面完成訂閱，通過後機器人會私訊你專屬邀請連結加入伺服器。"
       }
     },
     {
@@ -57,7 +57,7 @@
       "name": "怎麼取消訂閱？",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "隨時可以取消，沒有綁約期限。在歡迎頻道點「⚙️ 管理我的訂閱」按鈕，機器人會私訊你專屬管理連結，自己就能查看方案或取消，不用等人工處理。取消後 PRO 身分組會保留至當期訂閱期滿，之後不會再扣下一期款項。"
+        "text": "在 Whop 帳戶裡隨時可以取消，沒有綁約。取消後當期使用權限到期前都還能用，到期後會自動移出 Discord 伺服器，之後不會再扣款。"
       }
     },
     {
@@ -65,7 +65,7 @@
       "name": "通知多快會收到？怎麼推播的？",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "toytoy 透過自建機器人系統監控各大零售商庫存與上架動態，一有變化會直接在 Discord PRO 專屬頻道推播通知。搶手熱門通路拉高到每 2〜3 分鐘巡邏一次，其餘通路則是每天定期更新，不會漏掉任何一次上架或補貨。"
+        "text": "toytoy 透過自建機器人系統監控各大零售商庫存與上架動態，一有變化會直接在 Discord 頻道推播通知。搶手熱門通路拉高到每 2〜3 分鐘巡邏一次，其餘通路則是每天定期更新，不會漏掉任何一次上架或補貨。"
       }
     },
     {
@@ -73,7 +73,7 @@
       "name": "付款安全嗎？會存我的卡號嗎？",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "付款由第三方金流服務商處理，toytoy 不會接觸或儲存你的完整卡號。詳細規範請見訂閱條款與退款政策。"
+        "text": "付款透過 Whop 處理，toytoy 不會接觸或儲存你的完整卡號。詳細規範請見訂閱條款與退款政策。"
       }
     },
     {
@@ -449,7 +449,7 @@
   #features .wrap { max-width: 1180px; }
   .tier-grid {
     display: grid;
-    grid-template-columns: 0.82fr 1.36fr 0.82fr;
+    grid-template-columns: 1.25fr 1fr;
     align-items: center;
     gap: 28px;
   }
@@ -559,14 +559,11 @@
   }
   .pricing-grid {
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: 1fr;
     gap: 24px;
-    max-width: 900px;
+    max-width: 440px;
     margin: 0 auto;
     align-items: stretch;
-  }
-  @media (max-width: 640px) {
-    .pricing-grid { grid-template-columns: 1fr; }
   }
   .pricing-box {
     background: linear-gradient(180deg, var(--bg-card), var(--bg-alt));
@@ -769,8 +766,8 @@
     font-size: var(--fs-sm);
     margin-bottom: var(--space-2);
   }
-  /* 漸進式 CTA，不是最終轉換按鈕，視覺權重刻意比「免費加入 Discord」
-     「立即訂閱 PRO」這兩個真正的主要按鈕輕，所以沿用次要按鈕樣式
+  /* 漸進式 CTA，不是最終轉換按鈕，視覺權重刻意比「立即訂閱」這個
+     真正的主要按鈕輕，所以沿用次要按鈕樣式
      （半透明背景＋白色邊框），不用實心強調色。 */
   .notif-preview__btn {
     display: inline-block;
@@ -1059,9 +1056,9 @@
 
 <div class="marquee-bar" role="note" aria-label="最新公告">
   <div class="marquee-bar__track" id="marqueeTrack">
-    <span>◆ 現在加入 Discord，升級 PRO 搶先掌握限量商品快訊 ◆</span>
+    <span>◆ 現在訂閱 toytoy，搶先掌握限量商品快訊 ◆</span>
     <span>◆ 系統 24 小時運作中，即時監控 10 個澳洲零售通路 ◆</span>
-    <span>◆ 現在加入 Discord，升級 PRO 搶先掌握限量商品快訊 ◆</span>
+    <span>◆ 現在訂閱 toytoy，搶先掌握限量商品快訊 ◆</span>
     <span>◆ 系統 24 小時運作中，即時監控 10 個澳洲零售通路 ◆</span>
   </div>
 </div>
@@ -1092,11 +1089,11 @@
     </div>
   </div>
   <a href="#about">我們是誰</a>
-  <a href="https://discord.gg/fRNef8E5d" class="nav-cta">免費加入</a>
+  <a href="https://whop.com/tommy0809449" class="nav-cta">立即訂閱</a>
   <div class="nav-item">
     <a href="#faq">FAQ</a>
     <div class="dropdown">
-      <a href="#faq-discord-timing">免費 vs PRO</a>
+      <a href="#faq-discord-timing">訂閱內容</a>
     </div>
   </div>
 </nav>
@@ -1109,7 +1106,7 @@
         <h1>限量商品不等人<br>不必再守著網頁<span class="hero-highlight">刷新</span></h1>
         <p>toytoy 即時監控 Beyblade、Pokémon TCG、One Piece TCG、Naruto TCG 各大零售商的美版庫存，上架、預購、抽選的第一時間，直接推播給你。</p>
         <div class="hero-cta-group">
-          <a href="https://discord.gg/fRNef8E5d" class="discord-btn hero-cta">免費加入 Discord</a>
+          <a href="https://whop.com/tommy0809449" class="discord-btn hero-cta">立即訂閱，7 天免費試用</a>
           <a href="#features" class="discord-btn outline hero-cta">了解服務內容</a>
         </div>
       </div>
@@ -1200,11 +1197,11 @@
 
 <section id="features">
   <div class="wrap">
-    <h2 class="reveal">免費先看，付費先搶</h2>
-    <p class="section-subtitle reveal">兩種身分，決定你多快知道、多快買到</p>
+    <h2 class="reveal">訂閱就解鎖全部功能</h2>
+    <p class="section-subtitle reveal">不分免費付費，訂閱當下全部看得到</p>
 
     <div class="notif-preview reveal">
-      <p class="notif-preview__caption">沒有 PRO，等你自己發現時，這波補貨通常已經秒殺完售</p>
+      <p class="notif-preview__caption">沒有訂閱，等你自己發現時，這波補貨通常已經秒殺完售</p>
       <div class="notif-preview__card">
         <img class="notif-preview__avatar" src="favicon-512.png" alt="toytoy">
         <div class="notif-preview__body">
@@ -1217,9 +1214,10 @@
     </div>
 
     <div class="tier-grid">
-      <div class="tier-card free reveal">
-        <h3 class="tier-card-title">FREE</h3>
-        <p class="tier-card-tagline">先看不錯過，零成本</p>
+      <div class="tier-card pro reveal">
+        <span class="tier-card-badge">訂閱即解鎖</span>
+        <h3 class="tier-card-title">toytoy 訂閱</h3>
+        <p class="tier-card-tagline">認真蹲貨的人，不靠運氣</p>
         <ul class="tier-item-list">
           <li id="news-channel">
             <span class="tier-item-icon"><svg viewBox="0 0 24 24"><path d="M4 22a2 2 0 0 1-2-2V9a2 2 0 0 1 2-2h2"/><path d="M8 2h12a2 2 0 0 1 2 2v16a2 2 0 0 1-2 2H4"/><path d="M10 6h6v4h-6z"/><path d="M10 14h8M10 18h5"/></svg></span>
@@ -1235,21 +1233,6 @@
               <p class="tier-item-desc">跟同好聊貨況，不是一個人蹲</p>
             </div>
           </li>
-          <li id="onboarding-guide">
-            <span class="tier-item-icon"><svg viewBox="0 0 24 24"><path d="M12 6c-2-1.5-4.5-2-7-1.5v13c2.5-.5 5 0 7 1.5 2-1.5 4.5-2 7-1.5v-13c-2.5-.5-5 0-7 1.5Z"/><path d="M12 6v13"/></svg></span>
-            <div>
-              <strong>新手指南</strong>
-              <p class="tier-item-desc">3 分鐘搞懂怎麼蹲貨</p>
-            </div>
-          </li>
-        </ul>
-      </div>
-
-      <div class="tier-card pro reveal">
-        <span class="tier-card-badge">推薦</span>
-        <h3 class="tier-card-title">PRO</h3>
-        <p class="tier-card-tagline">認真蹲貨的人，不靠運氣</p>
-        <ul class="tier-item-list">
           <li id="realtime-alerts">
             <span class="tier-item-icon"><svg viewBox="0 0 24 24"><path d="M12 3a5 5 0 0 0-5 5v3.6L5 15h14l-2-3.4V8a5 5 0 0 0-5-5Z"/><path d="M10 19a2 2 0 0 0 4 0"/></svg></span>
             <div>
@@ -1269,6 +1252,13 @@
             <div>
               <strong>市場資訊整合</strong>
               <p class="tier-item-desc">一週更新行情，不用自己爬八個網站比價</p>
+            </div>
+          </li>
+          <li id="onboarding-guide">
+            <span class="tier-item-icon"><svg viewBox="0 0 24 24"><path d="M12 6c-2-1.5-4.5-2-7-1.5v13c2.5-.5 5 0 7 1.5 2-1.5 4.5-2 7-1.5v-13c-2.5-.5-5 0-7 1.5Z"/><path d="M12 6v13"/></svg></span>
+            <div>
+              <strong>新手指南</strong>
+              <p class="tier-item-desc">3 分鐘搞懂怎麼蹲貨</p>
             </div>
           </li>
         </ul>
@@ -1304,7 +1294,7 @@
       </div>
     </div>
 
-    <p class="section-cta reveal">免費加入就能看新聞、逛社群，升級 PRO 解鎖即時通知。<a href="#pricing">查看方案 →</a></p>
+    <p class="section-cta reveal">訂閱就能看新聞、逛社群、收即時通知，全部一次解鎖。<a href="#pricing">查看方案 →</a></p>
   </div>
 </section>
 
@@ -1316,32 +1306,27 @@
     <p class="reveal about-intro">現在，我們每天監控各大零售商的庫存與上架動態，把第一手情報整理好、即時推播給你，讓你不用再靠運氣蹲點，也不用再錯過任何一次補貨。</p>
     <p class="reveal about-intro">我們特別鎖定澳洲的零售通路，是因為澳洲市場常常補貨機會更多、蹲點的收藏家也相對較少。同樣一批限量商品，在澳洲反而更容易蹲得到。</p>
     <p class="reveal about-closing">感謝你的加入。希望在我們的合作之下，每位夥伴都能更快獲得資訊、更少踩雷。<br>也祝你每次都能成功蹲到心目中的那款！</p>
-    <p class="section-cta reveal">準備好不再錯過下一次補貨了嗎？<a href="#pricing">了解 PRO 會員 →</a></p>
+    <p class="section-cta reveal">準備好不再錯過下一次補貨了嗎？<a href="#pricing">了解訂閱方案 →</a></p>
   </div>
 </section>
 
 <section id="pricing">
   <div class="wrap">
-    <h2 class="reveal">免費加入．升級 PRO</h2>
+    <h2 class="reveal">訂閱方案</h2>
     <div class="pricing-grid">
-      <div class="pricing-box reveal">
-        <div class="plan-name">FREE</div>
-        <p class="plan-summary">新聞消息 + 收藏交流，先逛逛不用錢。</p>
-        <div class="price">NT$0<span> / 永久免費</span></div>
-        <a class="discord-btn outline" href="https://discord.gg/fRNef8E5d">加入免費 Discord</a>
-      </div>
       <div class="pricing-box pro reveal">
-        <div class="plan-name">PRO</div>
+        <div class="plan-name">toytoy 訂閱</div>
         <p class="plan-summary">熱門商品、補貨通知、搶購連結，第一時間搶到。</p>
-        <div class="price">NT$99<span> / 月</span></div>
-        <a class="discord-btn" href="https://discord.gg/fRNef8E5d">💎 立即訂閱 PRO</a>
+        <div class="price">US$3.99<span> / 月</span></div>
+        <p class="plan-summary" style="margin-top:-4px;">前 7 天免費試用</p>
+        <a class="discord-btn" href="https://whop.com/tommy0809449">💎 立即訂閱</a>
       </div>
     </div>
     <div class="pricing-howto reveal">
       <h3>只需決定這件事</h3>
-      <p>FREE → 讓你知道。<br>PRO → 讓你買到，付款完成立刻解鎖。</p>
-      <p>網站或 Discord 都能訂閱，<strong>付款完成立刻解鎖身分組</strong>，隨時可取消、不綁約。</p>
-      <p class="fineprint">付款由第三方金流服務商處理，toytoy 不會接觸或儲存你的完整卡號。詳見<a href="/toytoy/terms.html" style="color:var(--accent)">訂閱條款</a>與<a href="/toytoy/refund.html" style="color:var(--accent)">退款政策</a>。</p>
+      <p>先試 7 天，喜歡再繼續。試用期內取消不會被收費。</p>
+      <p>透過 Whop 訂閱，<strong>付款完成後機器人會私訊專屬邀請連結</strong>加入 Discord 伺服器，隨時可取消、不綁約。</p>
+      <p class="fineprint">付款透過 Whop 處理，toytoy 不會接觸或儲存你的完整卡號。詳見<a href="/toytoy/terms.html" style="color:var(--accent)">訂閱條款</a>與<a href="/toytoy/refund.html" style="color:var(--accent)">退款政策</a>。</p>
     </div>
   </div>
 </section>
@@ -1351,28 +1336,28 @@
     <h2 class="reveal">常見問題</h2>
 
     <details class="faq-item reveal" id="faq-discord-timing">
-      <summary>免費會員跟 PRO 會員差在哪？<svg class="faq-chevron" viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg></summary>
-      <div class="faq-answer-wrap"><p>免費加入就能看官方公告、新品消息，也能逛各品類的收藏交流頻道。升級 PRO 才能解鎖各大零售商即時庫存/補貨通知、限量商品搶購連結、澳洲通路情報等 PRO 專屬內容。</p></div>
+      <summary>訂閱後可以看到什麼？<svg class="faq-chevron" viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg></summary>
+      <div class="faq-answer-wrap"><p>訂閱就直接加入 toytoy 的 Discord 伺服器，新聞公告、收藏交流社群、各大零售商即時庫存/補貨通知、限量商品搶購連結、澳洲通路情報全部都看得到，不分免費跟付費兩種身分。</p></div>
     </details>
 
     <details class="faq-item reveal" id="faq-pricing">
       <summary>toytoy 訂閱費用多少？<svg class="faq-chevron" viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg></summary>
-      <div class="faq-answer-wrap"><p>加入 Discord 完全免費。PRO 會員費用為 NT$99 / 月，點歡迎頻道裡的「立即升級 PRO」按鈕即可取得訂閱連結升級，付款成功後立即解鎖。</p></div>
+      <div class="faq-answer-wrap"><p>訂閱費用是 US$3.99 / 月，前 7 天免費試用，試用期內取消不會被收費。透過 Whop 收款，點主頁的「立即訂閱」連結到結帳頁面完成訂閱，通過後機器人會私訊你專屬邀請連結加入伺服器。</p></div>
     </details>
 
     <details class="faq-item reveal" id="faq-cancel">
       <summary>怎麼取消訂閱？<svg class="faq-chevron" viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg></summary>
-      <div class="faq-answer-wrap"><p>隨時可以取消，沒有綁約期限。在歡迎頻道點「⚙️ 管理我的訂閱」按鈕，機器人會私訊你專屬管理連結，自己就能查看方案或取消，不用等人工處理。取消後 PRO 身分組會保留至當期訂閱期滿，之後不會再扣下一期款項。</p></div>
+      <div class="faq-answer-wrap"><p>在 Whop 帳戶裡隨時可以取消，沒有綁約。取消後當期使用權限到期前都還能用，到期後會自動移出 Discord 伺服器，之後不會再扣款。</p></div>
     </details>
 
     <details class="faq-item reveal" id="faq-notify-speed">
       <summary>通知多快會收到？怎麼推播的？<svg class="faq-chevron" viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg></summary>
-      <div class="faq-answer-wrap"><p>toytoy 透過自建機器人系統監控各大零售商庫存與上架動態，一有變化會直接在 Discord PRO 專屬頻道推播通知。搶手熱門通路拉高到每 2〜3 分鐘巡邏一次，其餘通路則是每天定期更新，不會漏掉任何一次上架或補貨。</p></div>
+      <div class="faq-answer-wrap"><p>toytoy 透過自建機器人系統監控各大零售商庫存與上架動態，一有變化會直接在 Discord 頻道推播通知。搶手熱門通路拉高到每 2〜3 分鐘巡邏一次，其餘通路則是每天定期更新，不會漏掉任何一次上架或補貨。</p></div>
     </details>
 
     <details class="faq-item reveal" id="faq-payment-safety">
       <summary>付款安全嗎？會存我的卡號嗎？<svg class="faq-chevron" viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg></summary>
-      <div class="faq-answer-wrap"><p>付款由第三方金流服務商處理，toytoy 不會接觸或儲存你的完整卡號。詳細規範請見<a href="/toytoy/terms.html" style="color:var(--accent)">訂閱條款</a>與<a href="/toytoy/refund.html" style="color:var(--accent)">退款政策</a>。</p></div>
+      <div class="faq-answer-wrap"><p>付款透過 Whop 處理，toytoy 不會接觸或儲存你的完整卡號。詳細規範請見<a href="/toytoy/terms.html" style="color:var(--accent)">訂閱條款</a>與<a href="/toytoy/refund.html" style="color:var(--accent)">退款政策</a>。</p></div>
     </details>
 
     <details class="faq-item reveal" id="faq-difference">
@@ -1391,7 +1376,7 @@
   <div class="wrap">
     <p>toytoy © 2026</p>
     <div class="footer-links">
-      <a href="https://discord.gg/fRNef8E5d">Discord 社群</a>
+      <a href="https://whop.com/tommy0809449">立即訂閱</a>
       <a href="/toytoy/terms.html">訂閱條款</a>
       <a href="/toytoy/refund.html">退款政策</a>
       <a href="/toytoy/privacy.html">隱私權政策</a>
@@ -1540,7 +1525,7 @@
   // 資料來源跟 Hero 區塊的 Discord Widget 卡片同一個 /activity 端點，
   // 沒有真實事件時退回一句真實可查證的說法，不編造假數字。
   var ACTIVITY_API = 'https://toyradar-payments-production.up.railway.app/activity';
-  var CTA_TEXT = '現在加入 Discord，升級 PRO 搶先掌握限量商品快訊';
+  var CTA_TEXT = '現在訂閱 toytoy，搶先掌握限量商品快訊';
   var FALLBACK_TEXT = '系統 24 小時運作中，即時監控 10 個澳洲零售通路';
   var MAX_EVENTS = 5;
   var BRAND_DISPLAY = {
