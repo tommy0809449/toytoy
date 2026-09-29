@@ -449,9 +449,11 @@
   #features .wrap { max-width: 1180px; }
   .tier-grid {
     display: grid;
-    grid-template-columns: 1.25fr 1fr;
-    align-items: center;
-    gap: 28px;
+    grid-template-columns: 1fr 1fr;
+    align-items: stretch;
+    gap: 32px;
+    border-top: 1px solid rgba(255,255,255,0.06);
+    padding-top: 40px;
   }
   @media (max-width: 860px) {
     #features .wrap { max-width: 980px; }
@@ -478,8 +480,8 @@
   }
   .tier-card-badge {
     position: absolute;
-    top: -12px;
-    right: 20px;
+    top: 16px;
+    right: 16px;
     background: linear-gradient(135deg, var(--accent), var(--accent-hover));
     color: #fff;
     font-size: 0.7rem;
@@ -519,7 +521,7 @@
     width: 32px;
     height: 32px;
     border-radius: var(--radius-icon);
-    background: var(--accent-tint);
+    background: rgba(99, 102, 241, 0.15);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -569,7 +571,7 @@
     background: linear-gradient(180deg, var(--bg-card), var(--bg-alt));
     border: 1px solid var(--border);
     border-radius: var(--radius-card);
-    padding: clamp(34px, 5vw, 52px);
+    padding: clamp(32px, 5vw, 52px);
     text-align: center;
     box-shadow: 0 10px 28px rgba(0,0,0,0.25);
     display: flex;
@@ -585,24 +587,35 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    margin-bottom: 6px;
+    margin-bottom: 24px;
+  }
+  .plan-tagline {
+    color: var(--text-dim);
+    font-size: 0.95rem;
+    line-height: 1.6;
+    margin-bottom: 48px;
   }
   .price {
     font-size: 2.4rem;
     font-weight: 700;
     letter-spacing: -0.02em;
-    margin: 6px 0 4px;
+    margin: 0 0 16px;
   }
   .price span { font-size: 1rem; color: var(--text-dim); font-weight: 400; }
+  .trial-note {
+    color: var(--text-dim);
+    font-size: 0.9rem;
+    margin-bottom: 32px;
+  }
+  .pricing-box .discord-btn { margin-top: 0; }
   .pricing-howto {
     max-width: 640px;
-    margin: 36px auto 0;
+    margin: 24px auto 0;
     text-align: left;
     color: var(--text-dim);
     font-size: 0.92rem;
     line-height: 1.7;
     background: var(--bg-card);
-    border: 1px solid var(--border);
     border-radius: var(--radius-card);
     padding: 24px 28px;
   }
@@ -703,7 +716,7 @@
   /* 假通知預覽卡片：模擬一則 Discord 補貨快訊長怎樣 */
   .notif-preview {
     text-align: center;
-    margin-bottom: var(--space-6);
+    margin-bottom: 48px;
   }
   .notif-preview__caption {
     color: var(--text-muted);
@@ -1094,6 +1107,12 @@
     <a href="#faq">FAQ</a>
     <div class="dropdown">
       <a href="#faq-discord-timing">訂閱內容</a>
+      <a href="#faq-pricing">費用多少</a>
+      <a href="#faq-cancel">怎麼取消</a>
+      <a href="#faq-notify-speed">通知多快</a>
+      <a href="#faq-payment-safety">付款安全</a>
+      <a href="#faq-difference">跟別人有什麼不同</a>
+      <a href="#faq-overseas">海外能不能用</a>
     </div>
   </div>
 </nav>
@@ -1316,10 +1335,10 @@
     <div class="pricing-grid">
       <div class="pricing-box pro reveal">
         <div class="plan-name">toytoy 訂閱</div>
-        <p class="plan-summary">熱門商品、補貨通知、搶購連結，第一時間搶到。</p>
+        <p class="plan-tagline">熱門商品、補貨通知、搶購連結，第一時間搶到。</p>
         <div class="price">US$3.99<span> / 月</span></div>
-        <p class="plan-summary" style="margin-top:-4px;">前 7 天免費試用</p>
-        <a class="discord-btn" href="https://whop.com/tommy0809449/products/toytoy-85/">💎 立即訂閱</a>
+        <p class="trial-note">前 7 天免費試用</p>
+        <a class="discord-btn" href="https://whop.com/tommy0809449/products/toytoy-85/">立即訂閱</a>
       </div>
     </div>
     <div class="pricing-howto reveal">
