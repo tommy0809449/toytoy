@@ -447,6 +447,12 @@
   .card p { color: var(--text-dim); font-size: 0.95rem; }
 
   #features .wrap { max-width: 1180px; }
+  .pricing-intro-section {
+    max-width: 640px;
+    margin: 0 auto;
+    padding: 0 24px;
+  }
+  .pricing-intro-section .notif-preview__card { max-width: 100%; }
   .tier-grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -760,6 +766,7 @@
     margin-bottom: var(--space-1);
   }
   .notif-preview__meta strong { color: var(--text); font-size: var(--fs-sm); }
+  .notif-preview__time { color: rgba(255,255,255,0.55); }
   .notif-preview__bot-tag {
     background: var(--accent);
     color: #fff;
@@ -1217,18 +1224,20 @@
 
 <section id="features">
   <div class="wrap">
-    <h2 class="reveal">訂閱就解鎖全部功能</h2>
-    <p class="section-subtitle reveal">不分免費付費，訂閱當下全部看得到</p>
+    <div class="pricing-intro-section">
+      <h2 class="reveal">訂閱就解鎖<br>全部功能</h2>
+      <p class="section-subtitle reveal">不分免費付費，訂閱當下全部看得到</p>
 
-    <div class="notif-preview reveal">
-      <p class="notif-preview__caption">沒有訂閱，等你自己發現時，這波補貨通常已經秒殺完售</p>
-      <div class="notif-preview__card">
-        <img class="notif-preview__avatar" src="favicon-512.png" alt="toytoy">
-        <div class="notif-preview__body">
-          <p class="notif-preview__meta"><strong>toytoy</strong><span class="notif-preview__bot-tag">機器人</span><span class="notif-preview__time">剛剛</span></p>
-          <p class="notif-preview__title">🔥 補貨快訊：Pokémon TCG 30週年慶祝系列 Elite Trainer Box</p>
-          <p class="notif-preview__desc">JB Hi-Fi 現貨上架，庫存有限</p>
-          <a href="#pricing" class="notif-preview__btn">看看真實案例 →</a>
+      <div class="notif-preview reveal">
+        <p class="notif-preview__caption">沒有訂閱，等你自己發現時，這波補貨通常已經秒殺完售</p>
+        <div class="notif-preview__card">
+          <img class="notif-preview__avatar" src="favicon-512.png" alt="toytoy">
+          <div class="notif-preview__body">
+            <p class="notif-preview__meta"><strong>toytoy</strong><span class="notif-preview__bot-tag">機器人</span><span class="notif-preview__time">3 分鐘前</span></p>
+            <p class="notif-preview__title">🔥 補貨快訊：Pokémon TCG 30週年慶祝系列 Elite Trainer Box</p>
+            <p class="notif-preview__desc">JB Hi-Fi 現貨上架，庫存有限</p>
+            <a href="#pricing" class="notif-preview__btn">看看真實案例 →</a>
+          </div>
         </div>
       </div>
     </div>
