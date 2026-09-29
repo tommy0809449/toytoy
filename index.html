@@ -447,19 +447,11 @@
   .card p { color: var(--text-dim); font-size: 0.95rem; }
 
   #features .wrap { max-width: 1180px; }
-  .pricing-intro-section {
-    max-width: 640px;
-    margin: 0 auto;
-    padding: 0 24px;
-  }
-  .pricing-intro-section .notif-preview__card { max-width: 100%; }
   .tier-grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
     align-items: stretch;
     gap: 32px;
-    border-top: 1px solid rgba(255,255,255,0.06);
-    padding-top: 40px;
   }
   @media (max-width: 860px) {
     #features .wrap { max-width: 980px; }
@@ -574,17 +566,37 @@
     align-items: stretch;
   }
   .pricing-box {
-    background: linear-gradient(180deg, var(--bg-card), var(--bg-alt));
+    background: var(--bg-card);
     border: 1px solid var(--border);
     border-radius: var(--radius-card);
-    padding: clamp(32px, 5vw, 52px);
+    padding: 48px;
     text-align: center;
     box-shadow: 0 10px 28px rgba(0,0,0,0.25);
     display: flex;
     flex-direction: column;
     position: relative;
   }
+  @media (max-width: 640px) {
+    .pricing-box { padding: 24px; }
+  }
   .pricing-box.pro { border-color: var(--accent); }
+  .pricing-card-subtitle.section-subtitle {
+    margin-top: 0;
+    margin-bottom: 32px;
+  }
+  .notif-preview--embedded { margin-bottom: 0; }
+  .notif-preview--embedded .notif-preview__card {
+    max-width: 100%;
+    background: transparent;
+    border: none;
+    padding: 0;
+    box-shadow: none;
+    animation: none;
+  }
+  .pricing-card-divider {
+    border-top: 1px solid rgba(255,255,255,0.08);
+    margin: 32px 0;
+  }
   .plan-name {
     font-size: 1.7rem;
     font-weight: 700;
@@ -1224,24 +1236,6 @@
 
 <section id="features">
   <div class="wrap">
-    <div class="pricing-intro-section">
-      <h2 class="reveal">訂閱就解鎖<br>全部功能</h2>
-      <p class="section-subtitle reveal">不分免費付費，訂閱當下全部看得到</p>
-
-      <div class="notif-preview reveal">
-        <p class="notif-preview__caption">沒有訂閱，等你自己發現時，這波補貨通常已經秒殺完售</p>
-        <div class="notif-preview__card">
-          <img class="notif-preview__avatar" src="favicon-512.png" alt="toytoy">
-          <div class="notif-preview__body">
-            <p class="notif-preview__meta"><strong>toytoy</strong><span class="notif-preview__bot-tag">機器人</span><span class="notif-preview__time">3 分鐘前</span></p>
-            <p class="notif-preview__title">🔥 補貨快訊：Pokémon TCG 30週年慶祝系列 Elite Trainer Box</p>
-            <p class="notif-preview__desc">JB Hi-Fi 現貨上架，庫存有限</p>
-            <a href="#pricing" class="notif-preview__btn">看看真實案例 →</a>
-          </div>
-        </div>
-      </div>
-    </div>
-
     <div class="tier-grid">
       <div class="tier-card pro reveal">
         <span class="tier-card-badge">訂閱即解鎖</span>
@@ -1341,9 +1335,23 @@
 
 <section id="pricing">
   <div class="wrap">
-    <h2 class="reveal">訂閱方案</h2>
+    <h2 class="reveal">訂閱就解鎖<br>全部功能</h2>
     <div class="pricing-grid">
       <div class="pricing-box pro reveal">
+        <p class="section-subtitle pricing-card-subtitle">不分免費付費，訂閱當下全部看得到</p>
+        <div class="notif-preview notif-preview--embedded">
+          <p class="notif-preview__caption">沒有訂閱，等你自己發現時，這波補貨通常已經秒殺完售</p>
+          <div class="notif-preview__card">
+            <img class="notif-preview__avatar" src="favicon-512.png" alt="toytoy">
+            <div class="notif-preview__body">
+              <p class="notif-preview__meta"><strong>toytoy</strong><span class="notif-preview__bot-tag">機器人</span><span class="notif-preview__time">3 分鐘前</span></p>
+              <p class="notif-preview__title">🔥 補貨快訊：Pokémon TCG 30週年慶祝系列 Elite Trainer Box</p>
+              <p class="notif-preview__desc">JB Hi-Fi 現貨上架，庫存有限</p>
+              <a href="https://whop.com/tommy0809449/products/toytoy-85/" class="notif-preview__btn">看看真實案例 →</a>
+            </div>
+          </div>
+        </div>
+        <div class="pricing-card-divider"></div>
         <div class="plan-name">toytoy 訂閱</div>
         <p class="plan-tagline">熱門商品、補貨通知、搶購連結，第一時間搶到。</p>
         <div class="price">US$3.99<span> / 月</span></div>
