@@ -562,31 +562,15 @@
     padding: 0;
   }
   .pricing-screen {
-    padding: 120px 24px;
-  }
-  .pricing-screen--action {
-    padding-top: 140px;
+    padding: 72px 24px 100px;
   }
   @media (max-width: 640px) {
-    .pricing-screen { padding: 80px 20px; }
-    .pricing-screen--action { padding-top: 100px; }
+    .pricing-screen { padding: 64px 20px 80px; }
   }
   .pricing-screen__inner {
     max-width: 640px;
     margin: 0 auto;
     text-align: center;
-  }
-  .pricing-screen--intro h2 {
-    font-size: clamp(2.2rem, 6vw, 4rem);
-    line-height: 1.1;
-    font-weight: 700;
-    letter-spacing: -0.02em;
-    margin-bottom: 24px;
-  }
-  .pricing-screen__subtitle {
-    color: var(--text-dim);
-    font-size: 1.25rem;
-    margin-bottom: 64px;
   }
   .pricing-price {
     font-size: clamp(3rem, 9vw, 6rem);
@@ -699,54 +683,6 @@
   }
   .hero-cta { margin-top: 4px; }
 
-  /* 假通知預覽卡片：模擬一則 Discord 補貨快訊長怎樣 */
-  .notif-preview__card {
-    display: flex;
-    align-items: flex-start;
-    gap: var(--space-2);
-    max-width: 480px;
-    margin: 0 auto;
-    text-align: left;
-    background: #28282b;
-    border-radius: 20px;
-    padding: 32px;
-  }
-  .notif-preview__avatar {
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
-    flex-shrink: 0;
-  }
-  .notif-preview__body { flex: 1; min-width: 0; }
-  .notif-preview__meta {
-    display: flex;
-    align-items: center;
-    gap: var(--space-1);
-    font-size: var(--fs-xs);
-    color: var(--text-muted);
-    margin-bottom: var(--space-1);
-  }
-  .notif-preview__meta strong { color: var(--text); font-size: var(--fs-sm); }
-  .notif-preview__time { color: var(--text-muted); }
-  .notif-preview__bot-tag {
-    background: rgba(255,255,255,0.12);
-    color: var(--text);
-    font-size: 11px;
-    font-weight: 600;
-    padding: 1px 8px;
-    border-radius: 4px;
-  }
-  .notif-preview__title {
-    color: var(--text);
-    font-weight: 700;
-    font-size: var(--fs-base);
-    line-height: 1.35;
-    margin-bottom: 4px;
-  }
-  .notif-preview__desc {
-    color: var(--text-dim);
-    font-size: var(--fs-sm);
-  }
   .section-cta {
     text-align: center;
     margin-top: 44px;
@@ -1259,21 +1195,6 @@
 </section>
 
 <section id="pricing">
-  <div class="pricing-screen pricing-screen--intro">
-    <div class="pricing-screen__inner">
-      <h2 class="reveal">訂閱就解鎖全部功能</h2>
-      <p class="pricing-screen__subtitle reveal">不分免費付費，訂閱當下全部看得到</p>
-      <div class="notif-preview__card reveal">
-        <img class="notif-preview__avatar" src="favicon-512.png" alt="toytoy">
-        <div class="notif-preview__body">
-          <p class="notif-preview__meta"><strong>toytoy</strong><span class="notif-preview__bot-tag">機器人</span><span class="notif-preview__time">3 分鐘前</span></p>
-          <p class="notif-preview__title">🔥 補貨快訊：Pokémon TCG 30週年慶祝系列 Elite Trainer Box</p>
-          <p class="notif-preview__desc">JB Hi-Fi 現貨上架，庫存有限</p>
-        </div>
-      </div>
-    </div>
-  </div>
-
   <div class="pricing-screen pricing-screen--action">
     <div class="pricing-screen__inner">
       <div class="pricing-price reveal">US$3.99<span>/ 月</span></div>
