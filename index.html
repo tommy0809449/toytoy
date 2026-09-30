@@ -557,114 +557,75 @@
     text-align: center;
     font-style: italic;
   }
-  .pricing-grid {
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: 24px;
-    max-width: 880px;
-    margin: 0 auto;
-    align-items: stretch;
+  #pricing {
+    background: #1d1d1f;
+    padding: 0;
   }
-  .pricing-box {
-    background: var(--bg-card);
-    border: 1px solid var(--border);
-    border-radius: var(--radius-card);
-    padding: 48px;
-    text-align: center;
-    box-shadow: 0 10px 28px rgba(0,0,0,0.25);
-    display: flex;
-    flex-direction: column;
-    position: relative;
+  .pricing-screen {
+    padding: 120px 24px;
+  }
+  .pricing-screen--action {
+    padding-top: 140px;
   }
   @media (max-width: 640px) {
-    .pricing-box { padding: 24px; }
+    .pricing-screen { padding: 80px 20px; }
+    .pricing-screen--action { padding-top: 100px; }
   }
-  .pricing-box.pro { border-color: var(--accent); }
-  .pricing-card-header { margin-bottom: 40px; }
-  .pricing-card-header h2 { margin-bottom: 0; }
-  .pricing-card-subtitle.section-subtitle {
-    margin-top: 24px;
-    margin-bottom: 0;
+  .pricing-screen__inner {
+    max-width: 640px;
+    margin: 0 auto;
+    text-align: center;
   }
-  .pricing-card-columns {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 32px;
-    text-align: left;
-  }
-  @media (max-width: 768px) {
-    .pricing-card-columns { grid-template-columns: 1fr; }
-  }
-  .pricing-card-columns .notif-preview { text-align: left; }
-  .notif-preview--embedded { margin-bottom: 0; }
-  .notif-preview--embedded .notif-preview__card {
-    max-width: 100%;
-    background: #1c2029;
-    border: 1px solid rgba(255,255,255,0.06);
-  }
-  .pricing-card-col--action .plan-name { justify-content: flex-start; }
-  .plan-name {
-    font-size: 1.7rem;
-    font-weight: 700;
-    letter-spacing: -0.01em;
-    min-height: 2.4em;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin-bottom: 24px;
-  }
-  .plan-tagline {
-    color: var(--text-dim);
-    font-size: 0.95rem;
-    line-height: 1.6;
-    margin-bottom: 48px;
-  }
-  .price {
-    font-size: 2.4rem;
+  .pricing-screen--intro h2 {
+    font-size: clamp(2.2rem, 6vw, 4rem);
+    line-height: 1.1;
     font-weight: 700;
     letter-spacing: -0.02em;
-    margin: 0 0 16px;
+    margin-bottom: 24px;
   }
-  .price span { font-size: 1rem; color: var(--text-dim); font-weight: 400; }
-  .trial-note {
+  .pricing-screen__subtitle {
     color: var(--text-dim);
-    font-size: 0.9rem;
-    margin-bottom: 32px;
+    font-size: 1.25rem;
+    margin-bottom: 64px;
   }
-  .pricing-box .discord-btn { margin-top: 0; }
-  .pricing-howto {
-    max-width: 640px;
-    margin: 24px auto 0;
-    text-align: left;
-    color: var(--text-dim);
-    font-size: 0.92rem;
-    line-height: 1.7;
-    background: var(--bg-card);
-    border: 1px solid var(--border);
-    border-radius: var(--radius-card);
-    padding: 24px 28px;
-  }
-  .pricing-howto h3 {
-    color: var(--text);
-    font-size: 1.1rem;
+  .pricing-price {
+    font-size: clamp(3rem, 9vw, 6rem);
     font-weight: 700;
-    margin-bottom: 12px;
+    letter-spacing: -0.02em;
+    margin-bottom: 16px;
   }
-  .pricing-howto p { margin-bottom: 14px; }
-  .pricing-howto ol {
-    padding-left: 20px;
-    margin-bottom: 14px;
-  }
-  .pricing-howto li { margin-bottom: 6px; }
-  .pricing-howto strong { color: var(--text); }
-  .pricing-howto .fineprint {
-    font-size: 0.82rem;
+  .pricing-price span {
+    font-size: 1.1rem;
     color: var(--text-dim);
-    border-top: 1px solid var(--border);
-    padding-top: 12px;
-    margin-top: 4px;
-    margin-bottom: 0;
+    font-weight: 400;
+    margin-left: 6px;
   }
+  .pricing-trial {
+    color: var(--text-dim);
+    font-size: 1rem;
+    margin-bottom: 48px;
+  }
+  .pricing-cta-btn {
+    display: inline-block;
+    background: #fff;
+    color: #1d1d1f;
+    font-weight: 600;
+    font-size: 1.05rem;
+    padding: 16px 32px;
+    border-radius: 999px;
+    text-decoration: none;
+    transition: background 200ms ease;
+  }
+  .pricing-cta-btn:hover { background: rgba(255,255,255,0.85); }
+  .pricing-fineprint {
+    margin-top: 48px;
+    color: var(--text-muted);
+    font-size: 0.85rem;
+    line-height: 1.7;
+  }
+  .pricing-fineprint p { margin-bottom: 8px; }
+  .pricing-fineprint p:last-child { margin-bottom: 0; }
+  .pricing-fineprint a { color: var(--text-dim); }
   .plan-features {
     list-style: none;
     text-align: left;
@@ -739,34 +700,16 @@
   .hero-cta { margin-top: 4px; }
 
   /* 假通知預覽卡片：模擬一則 Discord 補貨快訊長怎樣 */
-  .notif-preview {
-    text-align: center;
-    margin-bottom: 48px;
-  }
-  .notif-preview__caption {
-    color: var(--text-muted);
-    font-size: var(--fs-sm);
-    margin-bottom: var(--space-2);
-  }
   .notif-preview__card {
     display: flex;
     align-items: flex-start;
     gap: var(--space-2);
-    max-width: 440px;
+    max-width: 480px;
     margin: 0 auto;
     text-align: left;
-    background: var(--bg-card);
-    border: 1px solid var(--border);
-    border-radius: var(--radius-card);
-    padding: var(--space-3);
-    animation: notifBreathe 3.5s ease-in-out infinite;
-  }
-  @keyframes notifBreathe {
-    0%, 100% { box-shadow: 0 0 0 0 rgba(99,102,241,0); }
-    50% { box-shadow: 0 0 28px 3px rgba(99,102,241,0.14); }
-  }
-  @media (prefers-reduced-motion: reduce) {
-    .notif-preview__card { animation: none; }
+    background: #28282b;
+    border-radius: 20px;
+    padding: 32px;
   }
   .notif-preview__avatar {
     width: 40px;
@@ -784,17 +727,17 @@
     margin-bottom: var(--space-1);
   }
   .notif-preview__meta strong { color: var(--text); font-size: var(--fs-sm); }
-  .notif-preview__time { color: rgba(255,255,255,0.55); }
+  .notif-preview__time { color: var(--text-muted); }
   .notif-preview__bot-tag {
-    background: var(--accent);
-    color: #fff;
+    background: rgba(255,255,255,0.12);
+    color: var(--text);
     font-size: 11px;
-    font-weight: 700;
-    padding: 1px 6px;
+    font-weight: 600;
+    padding: 1px 8px;
     border-radius: 4px;
   }
   .notif-preview__title {
-    color: #fb923c;
+    color: var(--text);
     font-weight: 700;
     font-size: var(--fs-base);
     line-height: 1.35;
@@ -803,25 +746,6 @@
   .notif-preview__desc {
     color: var(--text-dim);
     font-size: var(--fs-sm);
-    margin-bottom: var(--space-2);
-  }
-  /* 漸進式 CTA，不是最終轉換按鈕，視覺權重刻意比「立即訂閱」這個
-     真正的主要按鈕輕，所以沿用次要按鈕樣式
-     （半透明背景＋白色邊框），不用實心強調色。 */
-  .notif-preview__btn {
-    display: inline-block;
-    background: rgba(255,255,255,0.05);
-    border: 1px solid rgba(255,255,255,0.15);
-    color: var(--text);
-    text-decoration: none;
-    font-size: var(--fs-sm);
-    font-weight: 600;
-    padding: 6px 18px;
-    border-radius: var(--radius-pill);
-    transition: background 200ms ease;
-  }
-  .notif-preview__btn:hover {
-    background: rgba(255,255,255,0.1);
   }
   .section-cta {
     text-align: center;
@@ -941,7 +865,6 @@
   }
 
   .card,
-  .pricing-box,
   .badge {
     transition: transform 200ms cubic-bezier(0.4, 0, 0.2, 1), border-color 200ms cubic-bezier(0.4, 0, 0.2, 1), box-shadow 200ms cubic-bezier(0.4, 0, 0.2, 1);
   }
@@ -950,10 +873,6 @@
     transform: translateY(-4px);
     border-color: var(--accent);
     box-shadow: 0 12px 28px rgba(0,0,0,0.3);
-  }
-
-  .pricing-box:hover {
-    transform: translateY(-4px);
   }
 
   .badge:hover {
@@ -1340,43 +1259,31 @@
 </section>
 
 <section id="pricing">
-  <div class="wrap">
-    <div class="pricing-grid">
-      <div class="pricing-box pro reveal">
-        <div class="pricing-card-header">
-          <h2 class="reveal">訂閱就解鎖<br>全部功能</h2>
-          <p class="section-subtitle pricing-card-subtitle">不分免費付費，訂閱當下全部看得到</p>
-        </div>
-        <div class="pricing-card-columns">
-          <div class="pricing-card-col pricing-card-col--evidence">
-            <div class="notif-preview notif-preview--embedded">
-              <p class="notif-preview__caption">沒有訂閱，等你自己發現時，這波補貨通常已經秒殺完售</p>
-              <div class="notif-preview__card">
-                <img class="notif-preview__avatar" src="favicon-512.png" alt="toytoy">
-                <div class="notif-preview__body">
-                  <p class="notif-preview__meta"><strong>toytoy</strong><span class="notif-preview__bot-tag">機器人</span><span class="notif-preview__time">3 分鐘前</span></p>
-                  <p class="notif-preview__title">🔥 補貨快訊：Pokémon TCG 30週年慶祝系列 Elite Trainer Box</p>
-                  <p class="notif-preview__desc">JB Hi-Fi 現貨上架，庫存有限</p>
-                  <a href="https://whop.com/tommy0809449/products/toytoy-85/" class="notif-preview__btn">看看真實案例 →</a>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="pricing-card-col pricing-card-col--action">
-            <div class="plan-name">toytoy 訂閱</div>
-            <p class="plan-tagline">熱門商品、補貨通知、搶購連結，第一時間搶到。</p>
-            <div class="price">US$3.99<span> / 月</span></div>
-            <p class="trial-note">前 7 天免費試用</p>
-            <a class="discord-btn" href="https://whop.com/tommy0809449/products/toytoy-85/">立即訂閱</a>
-          </div>
+  <div class="pricing-screen pricing-screen--intro">
+    <div class="pricing-screen__inner">
+      <h2 class="reveal">訂閱就解鎖全部功能</h2>
+      <p class="pricing-screen__subtitle reveal">不分免費付費，訂閱當下全部看得到</p>
+      <div class="notif-preview__card reveal">
+        <img class="notif-preview__avatar" src="favicon-512.png" alt="toytoy">
+        <div class="notif-preview__body">
+          <p class="notif-preview__meta"><strong>toytoy</strong><span class="notif-preview__bot-tag">機器人</span><span class="notif-preview__time">3 分鐘前</span></p>
+          <p class="notif-preview__title">🔥 補貨快訊：Pokémon TCG 30週年慶祝系列 Elite Trainer Box</p>
+          <p class="notif-preview__desc">JB Hi-Fi 現貨上架，庫存有限</p>
         </div>
       </div>
     </div>
-    <div class="pricing-howto reveal">
-      <h3>只需決定這件事</h3>
-      <p>先試 7 天，喜歡再繼續。試用期內取消不會被收費。</p>
-      <p>透過 Whop 訂閱，<strong>付款完成後機器人會私訊專屬邀請連結</strong>加入 Discord 伺服器，隨時可取消、不綁約。</p>
-      <p class="fineprint">付款透過 Whop 處理，toytoy 不會接觸或儲存你的完整卡號。詳見<a href="/toytoy/terms.html" style="color:var(--accent)">訂閱條款</a>與<a href="/toytoy/refund.html" style="color:var(--accent)">退款政策</a>。</p>
+  </div>
+
+  <div class="pricing-screen pricing-screen--action">
+    <div class="pricing-screen__inner">
+      <div class="pricing-price reveal">US$3.99<span>/ 月</span></div>
+      <p class="pricing-trial reveal">前 7 天免費試用</p>
+      <a class="pricing-cta-btn reveal" href="https://whop.com/tommy0809449/products/toytoy-85/">立即訂閱</a>
+      <div class="pricing-fineprint reveal">
+        <p>先試 7 天，喜歡再繼續。試用期內取消不會被收費。</p>
+        <p>透過 Whop 訂閱，付款完成後機器人會私訊專屬邀請連結加入 Discord 伺服器，隨時可取消、不綁約。</p>
+        <p>付款透過 Whop 處理，toytoy 不會接觸或儲存你的完整卡號。詳見<a href="/toytoy/terms.html">訂閱條款</a>與<a href="/toytoy/refund.html">退款政策</a>。</p>
+      </div>
     </div>
   </div>
 </section>
