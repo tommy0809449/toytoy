@@ -789,7 +789,7 @@
   .cat-rings i:nth-child(1) { width: 360px; height: 360px; }
   .cat-rings i:nth-child(2) { width: 560px; height: 560px; }
   .cat-rings i:nth-child(3) { width: 760px; height: 760px; }
-  .cat-rings { transform: rotate(40deg); }
+  .cat-rings { transform: rotate(40deg); transform-origin: 75% 50%; }
   .cat-shade { display: none; }
 
   /* 手機版 / 減少動態：一般區塊由上往下排 */
@@ -846,8 +846,8 @@
   <div class="marquee-bar__track" id="marqueeTrack">
     <span>◆ 現在訂閱 toytoy，搶先掌握限量商品快訊 ◆</span>
     <span>◆ 系統 24 小時運作中，即時監控 10 個澳洲零售通路 ◆</span>
-    <span>◆ 現在訂閱 toytoy，搶先掌握限量商品快訊 ◆</span>
-    <span>◆ 系統 24 小時運作中，即時監控 10 個澳洲零售通路 ◆</span>
+    <span aria-hidden="true">◆ 現在訂閱 toytoy，搶先掌握限量商品快訊 ◆</span>
+    <span aria-hidden="true">◆ 系統 24 小時運作中，即時監控 10 個澳洲零售通路 ◆</span>
   </div>
 </div>
 
@@ -930,17 +930,17 @@
 <section id="categories" class="cat-section">
   <div class="wrap">
     <div class="section-head reveal">
-      <span class="eyebrow">Categories</span>
+      <span class="eyebrow">品相總覽</span>
       <h2>我們服務的品相</h2>
     </div>
   </div>
   <div class="cat-scroll" id="cat-scroll">
     <div class="cat-stage">
       <div class="cat-slide" id="pokemon-tcg" data-cat="pokemon" style="--accent-rgb:255,194,26;--cat-accent:#FFC21A">
-        <div class="cat-bg"><img class="cat-sub" src="assets/fuse-pokemon-charizard.webp" width="1600" height="900" alt="" decoding="async" onerror="this.style.visibility='hidden'"><img class="cat-main" src="assets/fuse-pokemon-pikachu.webp" width="1600" height="900" alt="寶可夢卡牌 Pokémon TCG" decoding="async" onerror="this.style.visibility='hidden'"></div>
+        <div class="cat-bg"><img class="cat-sub" aria-hidden="true" src="assets/fuse-pokemon-charizard.webp" width="1600" height="900" alt="" decoding="async" onerror="this.style.visibility='hidden'"><img class="cat-main" src="assets/fuse-pokemon-pikachu.webp" width="1600" height="900" alt="寶可夢 TCG 背景插圖" decoding="async" onerror="this.style.visibility='hidden'"></div>
         
         <div class="cat-text wrap">
-          <div class="cat-title"><img class="cat-mascot" src="assets/mascot-pokemon.webp" width="72" height="72" alt="" decoding="async" onerror="this.style.display='none'"><div><h3>寶可夢卡牌</h3><p class="card-subtitle">Pokémon TCG</p></div></div>
+          <div class="cat-title"><img class="cat-mascot" src="assets/mascot-pokemon.webp" width="72" height="72" alt="ToyToy 吉祥物（寶可夢）" decoding="async" onerror="this.style.display='none'"><div><h3>寶可夢卡牌</h3><p class="card-subtitle">Pokémon TCG</p></div></div>
           <p class="cat-desc">寶可夢熱門商品常常幾分鐘內秒殺，連結一發就搶完。toytoy 整理澳洲各大通路的預購資訊與開賣時間，不用再半夜爬起來蹲點。</p>
           <a class="cat-btn" href="#services-pokemon">查看方案 →</a>
         </div>
@@ -949,25 +949,25 @@
         <div class="cat-bg"><div class="cat-rings" aria-hidden="true"><i></i><i></i><i></i></div></div>
         
         <div class="cat-text wrap">
-          <div class="cat-title"><img class="cat-mascot" src="assets/mascot-beyblade.webp" width="72" height="72" alt="" decoding="async" loading="lazy" onerror="this.style.display='none'"><div><h3>戰鬥陀螺</h3><p class="card-subtitle">Beyblade</p></div></div>
+          <div class="cat-title"><img class="cat-mascot" src="assets/mascot-beyblade.webp" width="72" height="72" alt="ToyToy 吉祥物（戰鬥陀螺）" decoding="async" loading="lazy" onerror="this.style.display='none'"><div><h3>戰鬥陀螺</h3><p class="card-subtitle">Beyblade</p></div></div>
           <p class="cat-desc">戰鬥陀螺新品發售通路分散，各零售商上架時間不一致。toytoy 監控澳洲各大通路庫存變化，第一時間通知上架與到貨消息。</p>
           <a class="cat-btn" href="#services-beyblade">查看方案 →</a>
         </div>
       </div>
       <div class="cat-slide" id="onepiece-tcg" data-cat="onepiece" style="--accent-rgb:232,36,43;--cat-accent:#E8242B">
-        <div class="cat-bg"><img class="cat-sub" src="assets/fuse-onepiece-wanted.webp" width="1600" height="900" alt="" decoding="async" loading="lazy" onerror="this.style.visibility='hidden'"><img class="cat-main" src="assets/fuse-onepiece-luffy.webp" width="1600" height="900" alt="航海王卡牌 One Piece TCG" decoding="async" loading="lazy" onerror="this.style.visibility='hidden'"></div>
+        <div class="cat-bg"><img class="cat-sub" aria-hidden="true" src="assets/fuse-onepiece-wanted.webp" width="1600" height="900" alt="" decoding="async" loading="lazy" onerror="this.style.visibility='hidden'"><img class="cat-main" src="assets/fuse-onepiece-luffy.webp" width="1600" height="900" alt="航海王 TCG 背景插圖" decoding="async" loading="lazy" onerror="this.style.visibility='hidden'"></div>
         <div class="cat-shade" aria-hidden="true"></div>
         <div class="cat-text wrap">
-          <div class="cat-title"><img class="cat-mascot" src="assets/mascot-onepiece.webp" width="72" height="72" alt="" decoding="async" loading="lazy" onerror="this.style.display='none'"><div><h3>航海王卡牌</h3><p class="card-subtitle">One Piece TCG</p></div></div>
+          <div class="cat-title"><img class="cat-mascot" src="assets/mascot-onepiece.webp" width="72" height="72" alt="ToyToy 吉祥物（航海王）" decoding="async" loading="lazy" onerror="this.style.display='none'"><div><h3>航海王卡牌</h3><p class="card-subtitle">One Piece TCG</p></div></div>
           <p class="cat-desc">航海王卡牌限量商品常採抽選制販售。toytoy 整理澳洲各通路的抽選時間與參加方式，不錯過報名期限。</p>
           <a class="cat-btn" href="#services-onepiece">查看方案 →</a>
         </div>
       </div>
       <div class="cat-slide" id="naruto-tcg" data-cat="naruto" style="--accent-rgb:255,122,26;--cat-accent:#FF7A1A">
-        <div class="cat-bg"><img class="cat-sub" src="assets/fuse-naruto-clouds.webp" width="1600" height="900" alt="" decoding="async" loading="lazy" onerror="this.style.visibility='hidden'"><img class="cat-main" src="assets/fuse-naruto-eyes.webp" width="1600" height="900" alt="火影忍者卡牌 Naruto TCG" decoding="async" loading="lazy" onerror="this.style.visibility='hidden'"></div>
+        <div class="cat-bg"><img class="cat-sub" aria-hidden="true" src="assets/fuse-naruto-clouds.webp" width="1600" height="900" alt="" decoding="async" loading="lazy" onerror="this.style.visibility='hidden'"><img class="cat-main" src="assets/fuse-naruto-eyes.webp" width="1600" height="900" alt="火影忍者 TCG 背景插圖" decoding="async" loading="lazy" onerror="this.style.visibility='hidden'"></div>
         
         <div class="cat-text wrap">
-          <div class="cat-title"><img class="cat-mascot" src="assets/mascot-naruto.webp" width="72" height="72" alt="" decoding="async" loading="lazy" onerror="this.style.display='none'"><div><h3>火影忍者卡牌</h3><p class="card-subtitle">Naruto TCG</p></div></div>
+          <div class="cat-title"><img class="cat-mascot" src="assets/mascot-naruto.webp" width="72" height="72" alt="ToyToy 吉祥物（火影忍者）" decoding="async" loading="lazy" onerror="this.style.display='none'"><div><h3>火影忍者卡牌</h3><p class="card-subtitle">Naruto TCG</p></div></div>
           <p class="cat-desc">火影忍者卡牌預計 2027 年夏季正式發售。toytoy 提前追蹤官方公告，開賣前就能掌握第一手消息。</p>
           <a class="cat-btn" href="#services-naruto">查看方案 →</a>
         </div>
@@ -981,14 +981,14 @@
     </div>
   </div>
   <div class="wrap">
-    <p class="section-cta reveal">想搶先看到這些品項的補貨消息？<a href="#pricing">查看方案 →</a></p>
+    <p class="section-cta reveal">想搶先看到這些品項的補貨消息？<a href="#pricing">查看訂閱方案 →</a></p>
   </div>
 </section>
 
 <section id="features" class="alt">
   <div class="wrap">
     <div class="section-head reveal">
-      <span class="eyebrow">Features</span>
+      <span class="eyebrow">訂閱內容</span>
       <h2>toytoy 訂閱</h2>
       <p class="sub">認真蹲貨的人，不靠運氣</p>
     </div>
@@ -1094,13 +1094,13 @@
   <!-- 第 1 屏：通知示意卡片 -->
   <div class="screen">
     <div class="screen-inner">
-      <span class="eyebrow reveal">Live Alerts</span>
+      <span class="eyebrow reveal">即時通知範例</span>
       <h2 class="reveal">訂閱就解鎖全部功能</h2>
       <p class="sub reveal">不分免費付費，訂閱當下全部看得到</p>
       <div class="notif-preview__card reveal">
         <img class="notif-preview__avatar" src="favicon-512.png" width="40" height="40" alt="toytoy" loading="lazy">
         <div class="notif-preview__body">
-          <p class="notif-preview__meta"><strong>toytoy</strong><span class="notif-preview__bot-tag">機器人</span><span class="notif-preview__time">3 分鐘前</span></p>
+          <p class="notif-preview__meta"><strong>toytoy</strong><span class="notif-preview__bot-tag">機器人</span><span class="notif-preview__bot-tag">範例</span><span class="notif-preview__time">範例通知</span></p>
           <p class="notif-preview__title">🔥 補貨快訊：Pokémon TCG 30週年慶祝系列 Elite Trainer Box</p>
           <p class="notif-preview__desc">JB Hi-Fi 現貨上架，庫存有限</p>
         </div>
@@ -1350,8 +1350,8 @@
     var track = document.getElementById('marqueeTrack');
     if (!track) return;
     var doubled = messages.concat(messages);
-    track.innerHTML = doubled.map(function (msg) {
-      return '<span>◆ ' + msg + ' ◆</span>';
+    track.innerHTML = doubled.map(function (msg, i) {
+      return '<span' + (i >= messages.length ? ' aria-hidden="true"' : '') + '>◆ ' + msg + ' ◆</span>';
     }).join('');
   }
 
