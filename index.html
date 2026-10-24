@@ -769,6 +769,75 @@
   .contact-modal__status { font-size: 0.8rem; margin-top: 4px; min-height: 1.2em; }
   .contact-modal__status.is-error { color: #ff6b6b; }
   .contact-modal__status.is-success { color: #63e6be; }
+
+  /* ═════ 品相：一個畫面一個品相的捲動區 ═════ */
+  .cat-section { padding-bottom: var(--section-pad); }
+  .cat-slide { position: relative; }
+  .cat-bg { position: relative; overflow: hidden; background: radial-gradient(circle at 75% 50%, rgba(var(--accent-rgb), .28), transparent 60%); }
+  .cat-bg img { display: block; width: 100%; height: 100%; object-fit: cover; object-position: right center; position: absolute; inset: 0; }
+  .cat-title { display: flex; align-items: center; gap: 16px; margin-bottom: 20px; }
+  .cat-mascot { height: 72px; width: 72px; object-fit: contain; flex-shrink: 0; }
+  .cat-title h3 { font-size: clamp(28px, 3.4vw, 40px); font-weight: 700; line-height: 1.2; letter-spacing: -0.01em; color: var(--text); }
+  .cat-title .card-subtitle { color: var(--cat-accent); font-size: 14px; margin: 4px 0 0; transition: color .4s; }
+  .cat-desc { color: var(--text-dim); font-size: 16px; line-height: 1.7; margin-bottom: 28px; }
+  .cat-btn { display: inline-flex; align-self: flex-start; padding: 12px 24px; border-radius: var(--radius-pill); background: var(--cat-accent); color: var(--ink-on-light); font-weight: 700; text-decoration: none; transition: background-color .4s, opacity .2s; }
+  .cat-btn:hover { opacity: .85; }
+  .cat-dots { display: none; }
+  .cat-rings { position: absolute; inset: 0; pointer-events: none; }
+  .cat-rings i { position: absolute; left: 75%; top: 50%; border-radius: 50%; border: 1px solid rgba(170,210,255,.18); transform: translate(-50%,-50%); }
+  .cat-rings i::after { content: ""; position: absolute; top: -3px; left: 50%; width: 6px; height: 6px; margin-left: -3px; border-radius: 50%; background: rgba(170,210,255,.45); }
+  .cat-rings i:nth-child(1) { width: 360px; height: 360px; }
+  .cat-rings i:nth-child(2) { width: 560px; height: 560px; }
+  .cat-rings i:nth-child(3) { width: 760px; height: 760px; }
+  .cat-rings { transform: rotate(40deg); }
+  .cat-shade { display: none; }
+
+  /* 手機版 / 減少動態：一般區塊由上往下排 */
+  .cat-slide + .cat-slide { margin-top: 64px; }
+  .cat-bg { height: 56vw; max-height: 420px; -webkit-mask-image: linear-gradient(to bottom, #000 55%, transparent); mask-image: linear-gradient(to bottom, #000 55%, transparent); }
+  .cat-sub { opacity: .35; }
+  .cat-text { padding-top: 8px; }
+  .cat-slide .cat-text > * { opacity: 0; transform: translateY(20px); transition: opacity .7s cubic-bezier(.16,1,.3,1), transform .7s cubic-bezier(.16,1,.3,1); }
+  .cat-slide.in-view .cat-text > * { opacity: 1; transform: none; }
+  .cat-slide.in-view .cat-text > :nth-child(2) { transition-delay: 60ms; }
+  .cat-slide.in-view .cat-text > :nth-child(3) { transition-delay: 120ms; }
+  @media (prefers-reduced-motion: reduce) {
+    .cat-slide .cat-text > * { opacity: 1; transform: none; transition: none; }
+  }
+
+  /* 桌面：sticky 捲動，進度綁定 scrollY */
+  @media (min-width: 768px) and (prefers-reduced-motion: no-preference) {
+    .cat-scroll { height: 400vh; position: relative; }
+    .cat-stage { position: sticky; top: 0; height: 100vh; overflow: hidden; }
+    .cat-slide { position: absolute; inset: 0; margin: 0 !important; opacity: 0; }
+    .cat-slide:first-of-type { opacity: 1; }
+    .cat-bg { position: absolute; inset: 0; height: auto; max-height: none; -webkit-mask-image: none; mask-image: none; }
+    .cat-bg img { width: 100%; height: 100%; }
+    .cat-main, .cat-sub { will-change: auto; }
+    .cat-slide.warm .cat-main, .cat-slide.warm .cat-sub { will-change: transform, opacity; }
+    .cat-text { position: absolute; inset: 0; display: flex; flex-direction: column; justify-content: center; max-width: 1200px; margin: 0 auto; left: 0; right: 0; padding-left: 24px; padding-right: 24px; }
+    .cat-text > * { max-width: 520px; }
+    .cat-slide .cat-text > * { opacity: 0; transform: translateY(24px); transition: opacity .4s ease, transform .4s ease; }
+    .cat-slide.on .cat-text > * { opacity: 1; transform: none; }
+    .cat-slide.past .cat-text > * { opacity: 0; transform: translateY(-16px); }
+    .cat-slide .cat-text > :nth-child(2) { transition-delay: 60ms; }
+    .cat-slide .cat-text > :nth-child(3) { transition-delay: 120ms; }
+    .cat-slide.in-view .cat-text > * { transform: translateY(24px); opacity: 0; }
+    .cat-slide.on.in-view .cat-text > * { opacity: 1; transform: none; }
+    .cat-slide.past.in-view .cat-text > * { opacity: 0; transform: translateY(-16px); }
+    .cat-shade { display: block; position: absolute; inset: 0; background: linear-gradient(90deg, var(--bg) 35%, transparent 70%); pointer-events: none; }
+    .cat-slide .cat-text { z-index: 2; }
+    .cat-dots { display: flex; flex-direction: column; gap: 14px; position: absolute; right: 28px; top: 50%; transform: translateY(-50%); z-index: 3; }
+    .cat-dots button { width: 10px; height: 10px; padding: 0; border: 0; border-radius: 50%; background: rgba(255,255,255,.25); cursor: pointer; transition: background-color .4s, transform .4s; }
+    .cat-dots button.active { background: var(--cat-now, #fff); transform: scale(1.3); }
+  }
+
+  /* Hero 小動畫 */
+  .hero-scroll { will-change: auto; }
+  @media (prefers-reduced-motion: no-preference) {
+    .hero-media img { animation: hero-in .8s cubic-bezier(.2,.7,.2,1) both; }
+    @keyframes hero-in { from { opacity: 0; transform: scale(.92); } to { opacity: 1; transform: scale(1); } }
+  }
 </style>
 </head>
 <body>
@@ -832,9 +901,7 @@
       <a href="https://whop.com/tommy0809449/products/toytoy-85/" class="discord-btn hero-cta">立即訂閱，7 天免費試用</a>
       <a href="#categories" class="discord-btn outline hero-cta">了解服務內容</a>
     </div>
-    <div class="hero-media media-slot reveal">
-      <img src="mascot-main.webp" width="920" height="920" alt="toytoy 吉祥物" fetchpriority="high" onerror="this.style.visibility='hidden'">
-    </div>
+    <div class="hero-media media-slot reveal"><div class="hero-scroll"><img src="mascot-main.webp" width="920" height="920" alt="toytoy 吉祥物" fetchpriority="high" onerror="this.style.visibility='hidden'"></div></div>
   </div>
 </header>
 
@@ -860,46 +927,60 @@
   </div>
 </div>
 
-<section id="categories">
+<section id="categories" class="cat-section">
   <div class="wrap">
     <div class="section-head reveal">
       <span class="eyebrow">Categories</span>
       <h2>我們服務的品相</h2>
     </div>
-    <div class="apple-list">
-      <div class="apple-card reveal" id="beyblade">
-        <div>
-          <h3>戰鬥陀螺</h3>
-          <p class="card-subtitle">Beyblade</p>
-          <p>戰鬥陀螺新品發售通路分散，各零售商上架時間不一致。toytoy 監控澳洲各大通路庫存變化，第一時間通知上架與到貨消息。</p>
+  </div>
+  <div class="cat-scroll" id="cat-scroll">
+    <div class="cat-stage">
+      <div class="cat-slide" id="pokemon-tcg" data-cat="pokemon" style="--accent-rgb:255,194,26;--cat-accent:#FFC21A">
+        <div class="cat-bg"><img class="cat-sub" src="assets/fuse-pokemon-charizard.webp" width="1600" height="900" alt="" decoding="async" onerror="this.style.visibility='hidden'"><img class="cat-main" src="assets/fuse-pokemon-pikachu.webp" width="1600" height="900" alt="寶可夢卡牌 Pokémon TCG" decoding="async" onerror="this.style.visibility='hidden'"></div>
+        
+        <div class="cat-text wrap">
+          <div class="cat-title"><img class="cat-mascot" src="assets/mascot-pokemon.webp" width="72" height="72" alt="" decoding="async" onerror="this.style.display='none'"><div><h3>寶可夢卡牌</h3><p class="card-subtitle">Pokémon TCG</p></div></div>
+          <p class="cat-desc">寶可夢熱門商品常常幾分鐘內秒殺，連結一發就搶完。toytoy 整理澳洲各大通路的預購資訊與開賣時間，不用再半夜爬起來蹲點。</p>
+          <a class="cat-btn" href="#services-pokemon">查看方案 →</a>
         </div>
-        <div class="media-slot"><img src="cat-beyblade.webp" width="640" height="480" alt="戰鬥陀螺 Beyblade" loading="lazy" onerror="this.style.visibility='hidden'"></div>
       </div>
-      <div class="apple-card reveal" id="pokemon-tcg">
-        <div>
-          <h3>寶可夢卡牌</h3>
-          <p class="card-subtitle">Pokémon TCG</p>
-          <p>寶可夢熱門商品常常幾分鐘內秒殺，連結一發就搶完。toytoy 整理澳洲各大通路的預購資訊與開賣時間，不用再半夜爬起來蹲點。</p>
+      <div class="cat-slide" id="beyblade" data-cat="beyblade" style="--accent-rgb:47,139,255;--cat-accent:#2F8BFF">
+        <div class="cat-bg"><div class="cat-rings" aria-hidden="true"><i></i><i></i><i></i></div></div>
+        
+        <div class="cat-text wrap">
+          <div class="cat-title"><img class="cat-mascot" src="assets/mascot-beyblade.webp" width="72" height="72" alt="" decoding="async" loading="lazy" onerror="this.style.display='none'"><div><h3>戰鬥陀螺</h3><p class="card-subtitle">Beyblade</p></div></div>
+          <p class="cat-desc">戰鬥陀螺新品發售通路分散，各零售商上架時間不一致。toytoy 監控澳洲各大通路庫存變化，第一時間通知上架與到貨消息。</p>
+          <a class="cat-btn" href="#services-beyblade">查看方案 →</a>
         </div>
-        <div class="media-slot"><img src="cat-pokemon.webp" width="640" height="480" alt="寶可夢卡牌 Pokémon TCG" loading="lazy" onerror="this.style.visibility='hidden'"></div>
       </div>
-      <div class="apple-card reveal" id="onepiece-tcg">
-        <div>
-          <h3>航海王卡牌</h3>
-          <p class="card-subtitle">One Piece TCG</p>
-          <p>航海王卡牌限量商品常採抽選制販售。toytoy 整理澳洲各通路的抽選時間與參加方式，不錯過報名期限。</p>
+      <div class="cat-slide" id="onepiece-tcg" data-cat="onepiece" style="--accent-rgb:232,36,43;--cat-accent:#E8242B">
+        <div class="cat-bg"><img class="cat-sub" src="assets/fuse-onepiece-wanted.webp" width="1600" height="900" alt="" decoding="async" loading="lazy" onerror="this.style.visibility='hidden'"><img class="cat-main" src="assets/fuse-onepiece-luffy.webp" width="1600" height="900" alt="航海王卡牌 One Piece TCG" decoding="async" loading="lazy" onerror="this.style.visibility='hidden'"></div>
+        <div class="cat-shade" aria-hidden="true"></div>
+        <div class="cat-text wrap">
+          <div class="cat-title"><img class="cat-mascot" src="assets/mascot-onepiece.webp" width="72" height="72" alt="" decoding="async" loading="lazy" onerror="this.style.display='none'"><div><h3>航海王卡牌</h3><p class="card-subtitle">One Piece TCG</p></div></div>
+          <p class="cat-desc">航海王卡牌限量商品常採抽選制販售。toytoy 整理澳洲各通路的抽選時間與參加方式，不錯過報名期限。</p>
+          <a class="cat-btn" href="#services-onepiece">查看方案 →</a>
         </div>
-        <div class="media-slot"><img src="cat-onepiece.webp" width="640" height="480" alt="航海王卡牌 One Piece TCG" loading="lazy" onerror="this.style.visibility='hidden'"></div>
       </div>
-      <div class="apple-card reveal" id="naruto-tcg">
-        <div>
-          <h3>火影忍者卡牌</h3>
-          <p class="card-subtitle">Naruto TCG</p>
-          <p>火影忍者卡牌預計 2027 年夏季正式發售。toytoy 提前追蹤官方公告，開賣前就能掌握第一手消息。</p>
+      <div class="cat-slide" id="naruto-tcg" data-cat="naruto" style="--accent-rgb:255,122,26;--cat-accent:#FF7A1A">
+        <div class="cat-bg"><img class="cat-sub" src="assets/fuse-naruto-clouds.webp" width="1600" height="900" alt="" decoding="async" loading="lazy" onerror="this.style.visibility='hidden'"><img class="cat-main" src="assets/fuse-naruto-eyes.webp" width="1600" height="900" alt="火影忍者卡牌 Naruto TCG" decoding="async" loading="lazy" onerror="this.style.visibility='hidden'"></div>
+        
+        <div class="cat-text wrap">
+          <div class="cat-title"><img class="cat-mascot" src="assets/mascot-naruto.webp" width="72" height="72" alt="" decoding="async" loading="lazy" onerror="this.style.display='none'"><div><h3>火影忍者卡牌</h3><p class="card-subtitle">Naruto TCG</p></div></div>
+          <p class="cat-desc">火影忍者卡牌預計 2027 年夏季正式發售。toytoy 提前追蹤官方公告，開賣前就能掌握第一手消息。</p>
+          <a class="cat-btn" href="#services-naruto">查看方案 →</a>
         </div>
-        <div class="media-slot"><img src="cat-naruto.webp" width="640" height="480" alt="火影忍者卡牌 Naruto TCG" loading="lazy" onerror="this.style.visibility='hidden'"></div>
+      </div>
+      <div class="cat-dots" aria-label="品相進度">
+        <button type="button" aria-label="寶可夢卡牌" data-i="0"></button>
+        <button type="button" aria-label="戰鬥陀螺" data-i="1"></button>
+        <button type="button" aria-label="航海王卡牌" data-i="2"></button>
+        <button type="button" aria-label="火影忍者卡牌" data-i="3"></button>
       </div>
     </div>
+  </div>
+  <div class="wrap">
     <p class="section-cta reveal">想搶先看到這些品項的補貨消息？<a href="#pricing">查看方案 →</a></p>
   </div>
 </section>
@@ -911,6 +992,7 @@
       <h2>toytoy 訂閱</h2>
       <p class="sub">認真蹲貨的人，不靠運氣</p>
     </div>
+    <span id="services-pokemon"></span><span id="services-beyblade"></span><span id="services-onepiece"></span><span id="services-naruto"></span>
     <div class="tier-grid">
       <div class="tier-card pro reveal">
         <span class="tier-card-badge">訂閱即解鎖</span>
@@ -1297,5 +1379,72 @@
 })();
 </script>
 
+<script>
+(function () {
+  var slides = [].slice.call(document.querySelectorAll('.cat-slide'));
+  var scroller = document.getElementById('cat-scroll');
+  var dots = [].slice.call(document.querySelectorAll('.cat-dots button'));
+  var heroScroll = document.querySelector('.hero-scroll');
+  var hero = document.querySelector('header.hero');
+  var animated = window.matchMedia('(min-width: 768px) and (prefers-reduced-motion: no-preference)');
+  function clamp(v, a, b) { return Math.min(b, Math.max(a, v)); }
+
+  // 手機 / 減少動態：進入畫面淡入一次
+  if ('IntersectionObserver' in window) {
+    var io = new IntersectionObserver(function (es) {
+      es.forEach(function (e) { if (e.isIntersecting) { e.target.classList.add('in-view'); io.unobserve(e.target); } });
+    }, { rootMargin: '0px 0px -10% 0px' });
+    slides.forEach(function (el) { io.observe(el); });
+  } else { slides.forEach(function (el) { el.classList.add('in-view'); }); }
+
+  if (!animated.matches) return;
+  var ticking = false, heroH = 0;
+  function frame() {
+    ticking = false;
+    var rect = scroller.getBoundingClientRect();
+    var p = clamp(-rect.top / (rect.height - window.innerHeight), 0, 1);
+    var active = Math.min(3, Math.floor(p * 4));
+    slides.forEach(function (el, k) {
+      var local = p * 4 - k;
+      var t = clamp(local, 0, 1);
+      var inn = k === 0 ? 1 : clamp(local / 0.15, 0, 1);
+      var out = k === 3 ? 1 : clamp((1 - local) / 0.15, 0, 1);
+      var o = (local < 0 || local > 1) ? 0 : Math.min(inn, out);
+      el.style.opacity = o;
+      el.classList.toggle('warm', Math.abs(active - k) <= 1);
+      el.classList.toggle('on', local >= 0.08 && local <= 0.92 || (k === 0 && local < 0.92) || (k === 3 && local > 0.08));
+      el.classList.toggle('past', local > 0.92 && k !== 3);
+      var main = el.querySelector('.cat-main'), sub = el.querySelector('.cat-sub');
+      var x = 40 * (1 - inn) - 20 * t - 24 * (1 - out);
+      if (main) main.style.transform = 'translateX(' + x.toFixed(1) + 'px) scale(' + (1 + 0.05 * (1 - inn)).toFixed(4) + ')';
+      if (sub) {
+        sub.style.transform = 'translateX(' + (-60 * t).toFixed(1) + 'px)';
+        if (el.dataset.cat === 'pokemon') sub.style.opacity = (0.25 * clamp((t - 0.5) / 0.5, 0, 1)).toFixed(3);
+      }
+      if (el.dataset.cat === 'beyblade') el.querySelector('.cat-rings').style.transform = 'rotate(' + (p * 360).toFixed(1) + 'deg)';
+    });
+    dots.forEach(function (d, k) { d.classList.toggle('active', k === active); });
+    scroller.style.setProperty('--cat-now', slides[active].style.getPropertyValue('--cat-accent'));
+    dots.forEach(function (d) { d.style.setProperty('--cat-now', slides[active].style.getPropertyValue('--cat-accent')); });
+
+    if (heroScroll && hero) {
+      var h = clamp(window.scrollY / (hero.offsetHeight || 1), 0, 1);
+      heroScroll.style.transform = 'translateY(' + (-6 * h).toFixed(2) + 'vh)';
+      heroScroll.style.opacity = (1 - 0.8 * h).toFixed(3);
+    }
+  }
+  function onScroll() { if (!ticking) { ticking = true; requestAnimationFrame(frame); } }
+  window.addEventListener('scroll', onScroll, { passive: true });
+  window.addEventListener('resize', onScroll);
+  dots.forEach(function (d) {
+    d.addEventListener('click', function () {
+      var k = +d.dataset.i, r = scroller.getBoundingClientRect();
+      var top = window.scrollY + r.top + (k + 0.5) * (r.height - window.innerHeight) / 4;
+      window.scrollTo({ top: top, behavior: 'smooth' });
+    });
+  });
+  frame();
+})();
+</script>
 </body>
 </html>
