@@ -795,8 +795,7 @@
   /* 手機版 / 減少動態：一般區塊由上往下排 */
   .cat-slide + .cat-slide { margin-top: 64px; }
   .cat-bg { height: 56vw; max-height: 420px; -webkit-mask-image: linear-gradient(to bottom, #000 55%, transparent); mask-image: linear-gradient(to bottom, #000 55%, transparent); }
-  .cat-sub { opacity: .6; z-index: 2; }
-  .cat-slide[data-cat="onepiece"] .cat-sub { opacity: .3; }
+  .cat-sub { display: none; }
   .cat-main { z-index: 1; }
   .cat-text { padding-top: 8px; }
   .cat-slide .cat-text > * { opacity: 0; transform: translateY(20px); transition: opacity .7s cubic-bezier(.16,1,.3,1), transform .7s cubic-bezier(.16,1,.3,1); }
@@ -1421,7 +1420,7 @@
       if (main) main.style.transform = 'translateX(' + x.toFixed(1) + 'px) scale(' + (1 + 0.05 * (1 - inn)).toFixed(4) + ')';
       if (sub) {
         sub.style.transform = 'translateX(' + (-60 * t).toFixed(1) + 'px)';
-        if (el.dataset.cat === 'pokemon') sub.style.opacity = (0.5 * clamp((t - 0.3) / 0.4, 0, 1)).toFixed(3);
+        if (el.dataset.cat === 'pokemon') sub.style.opacity = (0.4 * clamp((t - 0.3) / 0.4, 0, 1)).toFixed(3);
       }
       if (el.dataset.cat === 'beyblade') el.querySelector('.cat-rings').style.transform = 'rotate(' + (p * 360).toFixed(1) + 'deg)';
     });
