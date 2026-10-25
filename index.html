@@ -795,7 +795,8 @@
   /* 手機版 / 減少動態：一般區塊由上往下排 */
   .cat-slide + .cat-slide { margin-top: 64px; }
   .cat-bg { height: 56vw; max-height: 420px; -webkit-mask-image: linear-gradient(to bottom, #000 55%, transparent); mask-image: linear-gradient(to bottom, #000 55%, transparent); }
-  .cat-sub { display: none; }
+  .cat-bg .cat-sub { display: none; }
+  .cat-thumb { display: block; width: 112px; height: 112px; margin-top: 28px; border-radius: 20px; object-fit: cover; background: rgba(255,255,255,.04); }
   .cat-main { z-index: 1; }
   .cat-text { padding-top: 8px; }
   .cat-slide .cat-text > * { opacity: 0; transform: translateY(20px); transition: opacity .7s cubic-bezier(.16,1,.3,1), transform .7s cubic-bezier(.16,1,.3,1); }
@@ -944,6 +945,7 @@
           <div class="cat-title"><img class="cat-mascot" src="assets/mascot-pokemon.webp" width="72" height="72" alt="ToyToy 吉祥物（寶可夢）" decoding="async" onerror="this.style.display='none'"><div><h3>寶可夢卡牌</h3><p class="card-subtitle">Pokémon TCG</p></div></div>
           <p class="cat-desc">寶可夢熱門商品常常幾分鐘內秒殺，連結一發就搶完。toytoy 整理澳洲各大通路的預購資訊與開賣時間，不用再半夜爬起來蹲點。</p>
           <a class="cat-btn" href="#services-pokemon">查看方案 →</a>
+          <img class="cat-thumb" src="assets/thumb-pokemon-charizard.webp" width="112" height="112" alt="" aria-hidden="true" decoding="async" loading="lazy">
         </div>
       </div>
       <div class="cat-slide" id="beyblade" data-cat="beyblade" style="--accent-rgb:47,139,255;--cat-accent:#2F8BFF">
@@ -962,6 +964,7 @@
           <div class="cat-title"><img class="cat-mascot" src="assets/mascot-onepiece.webp" width="72" height="72" alt="ToyToy 吉祥物（航海王）" decoding="async" loading="lazy" onerror="this.style.display='none'"><div><h3>航海王卡牌</h3><p class="card-subtitle">One Piece TCG</p></div></div>
           <p class="cat-desc">航海王卡牌限量商品常採抽選制販售。toytoy 整理澳洲各通路的抽選時間與參加方式，不錯過報名期限。</p>
           <a class="cat-btn" href="#services-onepiece">查看方案 →</a>
+          <img class="cat-thumb" src="assets/thumb-onepiece-wanted.webp" width="112" height="112" alt="" aria-hidden="true" decoding="async" loading="lazy">
         </div>
       </div>
       <div class="cat-slide" id="naruto-tcg" data-cat="naruto" style="--accent-rgb:255,122,26;--cat-accent:#FF7A1A">
@@ -971,6 +974,7 @@
           <div class="cat-title"><img class="cat-mascot" src="assets/mascot-naruto.webp" width="72" height="72" alt="ToyToy 吉祥物（火影忍者）" decoding="async" loading="lazy" onerror="this.style.display='none'"><div><h3>火影忍者卡牌</h3><p class="card-subtitle">Naruto TCG</p></div></div>
           <p class="cat-desc">火影忍者卡牌預計 2027 年夏季正式發售。toytoy 提前追蹤官方公告，開賣前就能掌握第一手消息。</p>
           <a class="cat-btn" href="#services-naruto">查看方案 →</a>
+          <img class="cat-thumb" src="assets/thumb-naruto-clouds.webp" width="112" height="112" alt="" aria-hidden="true" decoding="async" loading="lazy">
         </div>
       </div>
       <div class="cat-dots" aria-label="品相進度">
