@@ -359,6 +359,14 @@
     background: radial-gradient(circle at 50% 40%, var(--accent-tint), var(--bg-deep) 70%);
   }
   .hero-media img { width: 100%; height: auto; display: block; }
+  /* 新版 Logo 已去背：整張完整展示，不裁圓、不加底色 */
+  .hero-media.media-slot {
+    width: min(560px, 88vw);
+    border-radius: 0;
+    background: none;
+    overflow: visible;
+  }
+  .hero-media.media-slot img { height: auto; object-fit: contain; }
 
   /* 圖片素材尚未放入時：保留色塊，不顯示破圖 */
   .media-slot {
