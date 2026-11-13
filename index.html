@@ -367,6 +367,21 @@
     overflow: visible;
   }
   .hero-media.media-slot img { height: auto; object-fit: contain; }
+  /* 桌機：文字在左、Logo 在右；手機維持上下排列 */
+  header.hero .hero-copy { display: flex; flex-direction: column; align-items: center; }
+  @media (min-width: 900px) {
+    header.hero .wrap {
+      flex-direction: row;
+      align-items: center;
+      justify-content: space-between;
+      gap: 56px;
+    }
+    header.hero .hero-copy { flex: 1 1 52%; align-items: flex-start; }
+    header.hero h1 { text-align: left; font-size: clamp(40px, 4.6vw, 64px); }
+    header.hero p.sub { text-align: left; margin: 24px 0 40px; max-width: 560px; }
+    header.hero .hero-cta-group { justify-content: flex-start; }
+    header.hero .hero-media.media-slot { flex: 0 1 44%; margin-top: 0; width: auto; max-width: 560px; }
+  }
 
   /* 圖片素材尚未放入時：保留色塊，不顯示破圖 */
   .media-slot {
@@ -905,11 +920,13 @@
 
 <header class="hero">
   <div class="wrap">
+    <div class="hero-copy">
     <h1 class="reveal">限量商品不等人<br>不必再守著網頁刷新</h1>
     <p class="sub reveal">toytoy 即時監控 Beyblade、Pokémon TCG、One Piece TCG、Naruto TCG 各大零售商的美版庫存，上架、預購、抽選的第一時間，直接推播給你。</p>
     <div class="hero-cta-group reveal">
       <a href="https://whop.com/tommy0809449/products/toytoy-85/" class="discord-btn hero-cta">立即訂閱，7 天免費試用</a>
       <a href="#categories" class="discord-btn outline hero-cta">了解服務內容</a>
+    </div>
     </div>
     <div class="hero-media media-slot reveal"><div class="hero-scroll"><img src="assets/mascot-main.webp" width="920" height="920" alt="toytoy 吉祥物" fetchpriority="high" onerror="this.style.visibility='hidden'"></div></div>
   </div>
