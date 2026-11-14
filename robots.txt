@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://tommy0809449.github.io/toytoy/sitemap.xml
+Sitemap: https://toytoy247.com/sitemap.xml
