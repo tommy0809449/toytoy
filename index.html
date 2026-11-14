@@ -543,8 +543,10 @@
   }
   .pricing-price span { font-size: clamp(18px, 2.4vw, 28px); color: var(--text-dim); font-weight: 400; margin-left: 8px; }
   .pricing-trial { color: var(--text-dim); font-size: clamp(16px, 2vw, 22px); margin-top: 16px; }
+  .screen--pricing { min-height: 0; padding-top: calc(var(--section-pad) * 1.2); padding-bottom: calc(var(--section-pad) * 1.2); }
   .pricing-cta-btn {
     display: inline-block;
+    margin-top: 48px;
     background: var(--text);
     color: var(--bg-pricing);
     font-weight: 700;
@@ -1155,18 +1157,12 @@
     </div>
   </div>
 
-  <!-- 第 2 屏：大價格 -->
-  <div class="screen screen--dark" id="pricing">
+  <!-- 第 2 屏：大價格 + 訂閱按鈕與小字（合併，避免中間大片空白） -->
+  <div class="screen screen--dark screen--pricing" id="pricing">
     <div class="screen-inner">
       <span class="eyebrow reveal">Pricing</span>
       <div class="pricing-price reveal">US$3.99<span>/ 月</span></div>
       <p class="pricing-trial reveal">前 7 天免費試用</p>
-    </div>
-  </div>
-
-  <!-- 第 3 屏：訂閱按鈕與小字說明 -->
-  <div class="screen screen--dark">
-    <div class="screen-inner">
       <a class="pricing-cta-btn reveal" href="https://whop.com/tommy0809449/products/toytoy-85/">立即訂閱</a>
       <div class="pricing-fineprint reveal">
         <p>先試 7 天，喜歡再繼續。試用期內取消不會被收費。</p>
