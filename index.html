@@ -864,6 +864,26 @@
     @keyframes hero-in { from { opacity: 0; transform: scale(.92); } to { opacity: 1; transform: scale(1); } }
   }
 </style>
+<!-- Google Analytics 4 -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-T964547EFT"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-T964547EFT');
+</script>
+<script>
+  // 訂閱按鈕點擊事件（導向 Whop 前記錄）
+  document.addEventListener('click', function (e) {
+    var a = e.target.closest && e.target.closest('a[href*="whop.com"]');
+    if (!a || typeof gtag !== 'function') return;
+    gtag('event', 'subscribe_click', {
+      link_text: (a.textContent || '').trim().slice(0, 40),
+      link_class: a.className || 'footer-link',
+      transport_type: 'beacon'
+    });
+  });
+</script>
 </head>
 <body>
 
